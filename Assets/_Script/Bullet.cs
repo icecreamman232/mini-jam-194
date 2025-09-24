@@ -1,14 +1,21 @@
+using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField] protected float m_speed;
     [SerializeField] [Min(0)] protected float m_range;
+    [SerializeField] private DamageHandler m_damageHandler;
     
     private Vector2 m_startPosition;
     private float m_travelledDistance;
     private bool m_isActivated;
-    
+
+    private void Awake()
+    {
+        m_damageHandler.OnHitTarget = DestroyBullet;
+    }
+
     public void Spawn()
     {
         m_isActivated = true;

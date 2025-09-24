@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6322035446040825341}
-  - component: {fileID: 8035545990288949137}
   - component: {fileID: 5716443667797498127}
+  - component: {fileID: 8035545990288949137}
+  - component: {fileID: 4362226239867532014}
   m_Layer: 0
   m_Name: Player Bullet
   m_TagString: Player Bullet
@@ -34,20 +35,6 @@ Transform:
   - {fileID: 5886828648036604647}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8035545990288949137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810611776693081003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09c748e2919ff3145b71157367f73ac6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_speed: 15
-  m_range: 8
 --- !u!61 &5716443667797498127
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -94,6 +81,39 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.15, y: 0.2}
   m_EdgeRadius: 0
+--- !u!114 &8035545990288949137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810611776693081003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c748e2919ff3145b71157367f73ac6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_speed: 15
+  m_range: 8
+  m_damageHandler: {fileID: 4362226239867532014}
+--- !u!114 &4362226239867532014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810611776693081003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e755d24fc03c28b4c9fa8ecdf5125a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_targetMask:
+    serializedVersion: 2
+    m_Bits: 192
+  m_minDamage: 10
+  m_maxDamage: 20
+  m_invulnerabilityDuration: 0.3
 --- !u!1 &3709170938914648614
 GameObject:
   m_ObjectHideFlags: 0
