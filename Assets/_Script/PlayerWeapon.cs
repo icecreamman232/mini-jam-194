@@ -2,15 +2,8 @@ using UnityEngine;
 
 public class PlayerWeapon : Weapon
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private float m_recoilForce;
+    
+    public float RecoilForce => m_recoilForce;
+    public Transform ShootingPivot => m_shootingPivot;
 }

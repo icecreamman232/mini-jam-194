@@ -119,6 +119,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &205307145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 205307146}
+  m_Layer: 0
+  m_Name: Shooting Pivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &205307146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205307145}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.157, y: 0.09, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 794152787}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &491396991
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +481,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -514,6 +545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_weaponPivot: {fileID: 940460640}
   m_weapon: {fileID: 794152788}
+  m_rigidbody: {fileID: 533700564}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,6 +640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 794152787}
   - component: {fileID: 794152788}
+  - component: {fileID: 794152789}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -629,6 +662,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1869888913}
+  - {fileID: 205307146}
   m_Father: {fileID: 940460640}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &794152788
@@ -643,6 +677,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe9a6567430a3b4896c8011a58cf4ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_shootingPivot: {fileID: 205307146}
+  m_delayAfterShot: 0.2
+  m_bulletPooler: {fileID: 794152789}
+  m_recoilForce: 1
+--- !u!114 &794152789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794152786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b872645b77bf80499a09976c6088c9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_autoCreateParentForPool: 1
+  m_parent: {fileID: 0}
+  m_isSharePool: 0
+  m_pooledObjectActiveByDefault: 0
+  m_objectToPool: {fileID: 8035545990288949137, guid: 2287078a4e870c14290fb8853d6bb220, type: 3}
+  m_poolSize: 20
 --- !u!1 &940460639
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,8 +805,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1217183791
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -1325595595324372504, guid: 597384c25e48875469ed23943a9cca28, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1896,7 +1952,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1217183791
   m_SortingLayer: 1
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 6575844457371078756, guid: 0c73e4e38bbef5c499d75f3b114d6194, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
