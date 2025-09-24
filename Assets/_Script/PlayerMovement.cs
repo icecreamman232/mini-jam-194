@@ -6,7 +6,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float m_speed;
     [SerializeField] private Rigidbody2D m_rigidbody;
     [SerializeField] private SpriteRenderer m_model;
+    [SerializeField] private Animator m_animator;
     private Vector2 m_moveDirection;
+    private readonly int m_runningBooleanAnimParam = Animator.StringToHash("Is Running");
 
     private void Start()
     {
@@ -25,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         {
             FlipModel(m_moveDirection.x < 0);
         }
+        m_animator.SetBool(m_runningBooleanAnimParam, m_moveDirection != Vector2.zero);
     }
 
     private void FixedUpdate()
