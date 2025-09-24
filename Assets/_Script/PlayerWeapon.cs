@@ -11,6 +11,7 @@ public class PlayerWeapon : Weapon
     [SerializeField] private float m_recoilForce;
     [SerializeField] [Range(1,5)] private float m_accuracy;
     [SerializeField] private PlayerReloadEvent m_playerReloadEvent;
+    [SerializeField] private PlayerMagazineEvent m_playerMagazineEvent;
     
     public float RecoilForce => m_recoilForce;
     public Transform ShootingPivot => m_shootingPivot;
@@ -23,6 +24,7 @@ public class PlayerWeapon : Weapon
     private void Start()
     {
         m_currrentMagazine = m_magazineSize;
+        m_playerMagazineEvent.Raise(m_currrentMagazine);
     }
 
     private Vector2 ApplyAccuracy(Vector2 inputDirection)
@@ -33,6 +35,11 @@ public class PlayerWeapon : Weapon
         return finalDirection;
     }
 
+    public void ManualReload()
+    {
+        StartCoroutine(OnReloading());
+    }
+
     public override bool Shoot(Vector2 aimDirection)
     {
         aimDirection = ApplyAccuracy(aimDirection);
@@ -40,10 +47,11 @@ public class PlayerWeapon : Weapon
         if (base.Shoot(aimDirection))
         {
             m_currrentMagazine--;
-
+            m_playerMagazineEvent.Raise(m_currrentMagazine);
             if (m_currrentMagazine <= 0)
             {
-                m_currrentMagazine = m_magazineSize;
+                m_currrentMagazine = 0;
+                m_playerMagazineEvent.Raise(m_currrentMagazine);
                 StartCoroutine(OnReloading());
             }
             return true;
@@ -64,6 +72,9 @@ public class PlayerWeapon : Weapon
             yield return null;
         }
 
+        m_currrentMagazine = m_magazineSize;
+        m_playerMagazineEvent.Raise(m_currrentMagazine);
+        
         m_reloadTimer = 0;
         m_canShoot = true;
     }

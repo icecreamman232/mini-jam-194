@@ -103,19 +103,19 @@ namespace SGGames.Script.Core
         {
             m_moveAction = InputSystem.actions.FindAction("Move");
             m_attackAction = InputSystem.actions.FindAction("Attack");
-            //m_reloadAction = InputSystem.actions.FindAction("Reload");
+            m_reloadAction = InputSystem.actions.FindAction("Reload");
         }
 
         private void RegisterAction()
         {
             m_attackAction.performed += AttackActionOnPerformed;
-            //m_reloadAction.performed += OnReloadInputPerformed;
+            m_reloadAction.performed += OnReloadInputPerformed;
         }
 
         private void UnregisterAction()
         {
             m_attackAction.performed -= AttackActionOnPerformed;
-            //m_reloadAction.performed -= OnReloadInputPerformed;
+            m_reloadAction.performed -= OnReloadInputPerformed;
         }
         
         private void AttackActionOnPerformed(InputAction.CallbackContext callbackContext)

@@ -14,11 +14,13 @@ public class PlayerWeaponHandler : MonoBehaviour
     private void Start()
     {
         ServiceLocator.GetService<InputManager>().OnAttackInputCallback += OnAttackInputCallback;
+        ServiceLocator.GetService<InputManager>().OnReloadInputCallback += OnReloadInputCallback;
     }
 
     private void OnDestroy()
     {
         ServiceLocator.GetService<InputManager>().OnAttackInputCallback -= OnAttackInputCallback;
+        ServiceLocator.GetService<InputManager>().OnReloadInputCallback -= OnReloadInputCallback;
     }
 
     private void Update()
@@ -34,6 +36,11 @@ public class PlayerWeaponHandler : MonoBehaviour
         {
             m_rigidbody.AddForce(-m_aimDirection * (100f * m_weapon.RecoilForce));
         }
+    }
+    
+    private void OnReloadInputCallback()
+    {
+        m_weapon.ManualReload();
     }
 
     private void UpdateWeaponRotation()
