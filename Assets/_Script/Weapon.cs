@@ -10,7 +10,7 @@ public class Weapon : MonoBehaviour
     
     private bool m_canShoot = true;
     
-    public bool Shoot(Vector2 aimDirection)
+    public virtual bool Shoot(Vector2 aimDirection)
     {
         if (!m_canShoot) return false;
         

@@ -681,6 +681,7 @@ MonoBehaviour:
   m_delayAfterShot: 0.2
   m_bulletPooler: {fileID: 794152789}
   m_recoilForce: 1
+  m_accuracy: 2
 --- !u!114 &794152789
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class PlayerWeaponHandler : MonoBehaviour
     [SerializeField] private PlayerWeapon m_weapon;
     [SerializeField] private Rigidbody2D m_rigidbody;
     
+    
     private Vector2 m_aimDirection;
     private bool m_isFlipped;
     
