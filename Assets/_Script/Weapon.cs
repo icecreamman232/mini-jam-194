@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float m_delayAfterShot;
     [SerializeField] private ObjectPooler<Bullet> m_bulletPooler;
     
-    private bool m_canShoot = true;
+    protected bool m_canShoot = true;
     
     public virtual bool Shoot(Vector2 aimDirection)
     {

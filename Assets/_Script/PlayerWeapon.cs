@@ -1,16 +1,30 @@
+using System;
+using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerWeapon : Weapon
 {
+    [SerializeField] private int m_magazineSize;
+    [SerializeField] private int m_currrentMagazine;
+    [SerializeField] private float m_reloadTime;
     [SerializeField] private float m_recoilForce;
     [SerializeField] [Range(1,5)] private float m_accuracy;
+    [SerializeField] private PlayerReloadEvent m_playerReloadEvent;
     
     public float RecoilForce => m_recoilForce;
     public Transform ShootingPivot => m_shootingPivot;
-    
+
+    private ReloadEventData m_reloadEventData = new ReloadEventData();
+    private float m_reloadTimer;
     private const float k_DefaultDifferentAngle = 12;
     private const float k_DifferentAnglePerAccuracy = 2;
-    
+
+    private void Start()
+    {
+        m_currrentMagazine = m_magazineSize;
+    }
+
     private Vector2 ApplyAccuracy(Vector2 inputDirection)
     {
         var differentAngle = k_DefaultDifferentAngle - ((m_accuracy > 5 ? 5 : m_accuracy) * k_DifferentAnglePerAccuracy);
@@ -22,7 +36,35 @@ public class PlayerWeapon : Weapon
     public override bool Shoot(Vector2 aimDirection)
     {
         aimDirection = ApplyAccuracy(aimDirection);
-        
-        return base.Shoot(aimDirection);
+
+        if (base.Shoot(aimDirection))
+        {
+            m_currrentMagazine--;
+
+            if (m_currrentMagazine <= 0)
+            {
+                m_currrentMagazine = m_magazineSize;
+                StartCoroutine(OnReloading());
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private IEnumerator OnReloading()
+    {
+        m_canShoot = false;
+        var timeStop = Time.time + m_reloadTime;
+        while (timeStop > Time.time)
+        {
+            m_reloadTimer += Time.deltaTime;
+            m_reloadEventData.CurrentReloadTime = m_reloadTimer;
+            m_reloadEventData.MaxReloadTime = m_reloadTime;
+            m_playerReloadEvent.Raise(m_reloadEventData);
+            yield return null;
+        }
+
+        m_reloadTimer = 0;
+        m_canShoot = true;
     }
 }
