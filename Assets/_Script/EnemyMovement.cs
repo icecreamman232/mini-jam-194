@@ -1,0 +1,32 @@
+using UnityEngine;
+
+public class EnemyMovement : MonoBehaviour
+{
+    [SerializeField] private float m_speed;
+    [SerializeField] private Rigidbody2D m_rigidbody;
+    [SerializeField] private SpriteRenderer m_model;
+    [SerializeField] private Animator m_animator;
+    
+    private Vector2 m_moveDirection;
+    private readonly int m_RunningBooleanAnimParam = Animator.StringToHash("Is Running");
+
+    public void ChangeMoveDirection(Vector2 moveDirection)
+    {
+        m_moveDirection = moveDirection;
+        if (moveDirection.x != 0)
+        {
+            FlipModel(moveDirection.x < 0);
+        }
+        m_animator.SetBool(m_RunningBooleanAnimParam, m_moveDirection != Vector2.zero);
+    }
+    
+    private void FixedUpdate()
+    {
+        m_rigidbody.MovePosition(m_rigidbody.position + m_moveDirection * (m_speed * Time.fixedDeltaTime));
+    }
+
+    private void FlipModel(bool isFlipped)
+    {
+        m_model.flipX = isFlipped;
+    }
+}
