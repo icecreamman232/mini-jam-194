@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour , IKnockback
 {
     [SerializeField] private float m_speed;
     [SerializeField] private Rigidbody2D m_rigidbody;
@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
     
     private Vector2 m_moveDirection;
     private readonly int m_RunningBooleanAnimParam = Animator.StringToHash("Is Running");
-
+    
     public void ChangeMoveDirection(Vector2 moveDirection)
     {
         m_moveDirection = moveDirection;
@@ -28,5 +28,10 @@ public class EnemyMovement : MonoBehaviour
     private void FlipModel(bool isFlipped)
     {
         m_model.flipX = isFlipped;
+    }
+
+    public void ApplyKnockback(Vector2 force)
+    {
+        m_rigidbody.AddForce(force);
     }
 }

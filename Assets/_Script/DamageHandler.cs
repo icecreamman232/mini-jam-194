@@ -9,6 +9,7 @@ public class DamageHandler : MonoBehaviour
     [SerializeField] private float m_minDamage;
     [SerializeField] private float m_maxDamage;
     [SerializeField] private float m_invulnerabilityDuration = 0.3f;
+    [SerializeField] private float m_knockbackForce = 1f;
 
     public Action OnHitTarget;
     
@@ -25,6 +26,13 @@ public class DamageHandler : MonoBehaviour
         {
             damageable.TakeDamage(GetDamage(), this.gameObject, m_invulnerabilityDuration);
         }
+
+        if (other.gameObject.TryGetComponent<IKnockback>(out var knockbackable))
+        {
+            var atkDirection = (other.transform.position - transform.position).normalized;
+            knockbackable.ApplyKnockback(atkDirection * m_knockbackForce * 100f);
+        }
+        
         OnHitTarget?.Invoke();
     }
 }

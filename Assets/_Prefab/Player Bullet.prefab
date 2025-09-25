@@ -114,6 +114,7 @@ MonoBehaviour:
   m_minDamage: 10
   m_maxDamage: 20
   m_invulnerabilityDuration: 0.3
+  m_knockbackForce: 3
 --- !u!1 &3709170938914648614
 GameObject:
   m_ObjectHideFlags: 0
