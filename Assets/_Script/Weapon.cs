@@ -9,6 +9,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] private ObjectPooler<Bullet> m_bulletPooler;
     
     protected bool m_canShoot = true;
+
+    public bool CanShoot => m_canShoot;
     
     public virtual bool Shoot(Vector2 aimDirection)
     {
