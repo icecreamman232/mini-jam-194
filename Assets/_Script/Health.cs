@@ -62,8 +62,6 @@ public class Health : MonoBehaviour, IDamageable
 
     protected virtual IEnumerator OnInvulnerable(float duration)
     {
-        m_isInvulnerable = true;
-        yield return new WaitForSeconds(duration);
-        m_isInvulnerable = false;
+        yield return null;
     }
 }

@@ -693,6 +693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 3
   m_currentHealth: 0
+  m_model: {fileID: 1225918140}
   m_healthEvent: {fileID: 11400000, guid: 49f0176ec6b13db439a3fe42e1a70332, type: 2}
 --- !u!1 &536160381
 GameObject:
@@ -1545,7 +1546,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 23a2f33a82447ec498e21127de940e5f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
