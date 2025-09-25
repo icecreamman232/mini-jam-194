@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class EnemyHealth : Health
 {
+    [SerializeField] private bool m_isNoDamage;
     [SerializeField] private SpriteRenderer m_model;
     private MaterialPropertyBlock m_materialPropertyBlock;
     private readonly int BlendAmount = Shader.PropertyToID("_BlendAmount");
@@ -12,6 +13,18 @@ public class EnemyHealth : Health
     {
         m_materialPropertyBlock = new MaterialPropertyBlock();
         base.Start();
+    }
+
+    public void SetNoDamage(bool isNoDamage)
+    {
+        m_isNoDamage = isNoDamage;
+    }
+
+    protected override bool CanTakeDamage()
+    {
+        if (m_isNoDamage) return false;
+        
+        return base.CanTakeDamage();
     }
 
     protected override void UpdateHealthBar()
