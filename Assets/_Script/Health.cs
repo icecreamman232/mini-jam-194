@@ -8,7 +8,7 @@ public class Health : MonoBehaviour, IDamageable
     
     protected bool m_isInvulnerable;
 
-    private void Start()
+    protected virtual void Start()
     {
         m_currentHealth = m_maxHealth;
         UpdateHealthBar();

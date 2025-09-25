@@ -53,6 +53,7 @@ namespace SGGames.Scripts.System
             m_cameraDistance = transform.position.z;
             m_camera = GetComponent<Camera>();
             CalculateCameraBounds();
+            m_shakeOffset = m_defaultPosition;
             IsActivated = true;
         }
 
@@ -111,36 +112,39 @@ namespace SGGames.Scripts.System
         private void FixedUpdate()
         {
             if (!IsActivated) return;
-            if (!m_canFollow) return;
-            if (m_followingTarget == null) return;
             
             UpdateShake();
-            
-            
-            m_currentTargetPos = m_followingTarget.position;
-            m_currentTargetPos.z = m_cameraDistance;
-            
-            if (m_useBounds)
-            {
-                // Apply bounds constraint taking camera dimensions into account
-                float constrainedX = Mathf.Clamp(m_currentTargetPos.x, 
-                    m_boundsMin.x + m_cameraHalfWidth, 
-                    m_boundsMax.x - m_cameraHalfWidth);
-                    
-                float constrainedY = Mathf.Clamp(m_currentTargetPos.y, 
-                    m_boundsMin.y + m_cameraHalfHeight, 
-                    m_boundsMax.y - m_cameraHalfHeight);
-                
-                m_currentTargetPos.x = constrainedX;
-                m_currentTargetPos.y = constrainedY;
-            }
-            
-            // Smooth camera movement using lerp
-            Vector3 targetPosition = Vector3.Lerp(transform.position, m_currentTargetPos, m_followSpeed * Time.deltaTime);
-            
-            // Apply shake offset
-            transform.position = targetPosition + m_shakeOffset;
 
+            if (m_canFollow && m_followingTarget != null)
+            {
+                m_currentTargetPos = m_followingTarget.position;
+                m_currentTargetPos.z = m_cameraDistance;
+            
+                if (m_useBounds)
+                {
+                    // Apply bounds constraint taking camera dimensions into account
+                    float constrainedX = Mathf.Clamp(m_currentTargetPos.x, 
+                        m_boundsMin.x + m_cameraHalfWidth, 
+                        m_boundsMax.x - m_cameraHalfWidth);
+                    
+                    float constrainedY = Mathf.Clamp(m_currentTargetPos.y, 
+                        m_boundsMin.y + m_cameraHalfHeight, 
+                        m_boundsMax.y - m_cameraHalfHeight);
+                
+                    m_currentTargetPos.x = constrainedX;
+                    m_currentTargetPos.y = constrainedY;
+                }
+            
+                // Smooth camera movement using lerp
+                Vector3 targetPosition = Vector3.Lerp(transform.position, m_currentTargetPos, m_followSpeed * Time.deltaTime);
+                // Apply shake offset
+                transform.position = targetPosition + m_shakeOffset;
+            }
+            else
+            {
+                // Apply shake offset
+                transform.position = m_shakeOffset;
+            }
         }
         
         private void UpdateShake()
@@ -154,7 +158,7 @@ namespace SGGames.Scripts.System
             {
                 // Shake finished
                 m_isShaking = false;
-                m_shakeOffset = Vector3.zero;
+                m_shakeOffset = m_defaultPosition;
                 return;
             }
             
@@ -166,11 +170,9 @@ namespace SGGames.Scripts.System
             m_shakeOffset = new Vector3(
                 UnityEngine.Random.Range(-currentIntensity, currentIntensity),
                 UnityEngine.Random.Range(-currentIntensity, currentIntensity),
-                0f
+                -10f
             );
         }
-
-        
 
         private void OnDrawGizmosSelected()
         {
