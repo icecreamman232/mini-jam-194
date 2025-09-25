@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -9,7 +8,7 @@ public class Bullet : MonoBehaviour
     
     private Vector2 m_startPosition;
     private float m_travelledDistance;
-    private bool m_isActivated;
+    protected bool m_isActivated;
 
     private void Awake()
     {
