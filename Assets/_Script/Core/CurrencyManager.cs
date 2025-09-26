@@ -31,4 +31,9 @@ public class CurrencyManager : MonoBehaviour, IGameService, IBootStrap
         OnCoinChange?.Invoke(m_coins);
         return true;
     }
+    
+    public bool CanPurchase(int amount)
+    {
+        return m_coins >= amount;
+    }
 }

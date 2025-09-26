@@ -116,7 +116,7 @@ TextureImporter:
       name: player-pistol
       rect:
         serializedVersion: 2
-        x: 1
+        x: 17
         y: 12
         width: 4
         height: 3
@@ -138,7 +138,7 @@ TextureImporter:
       name: player-bullet
       rect:
         serializedVersion: 2
-        x: 9
+        x: 25
         y: 12
         width: 2
         height: 3
@@ -152,6 +152,94 @@ TextureImporter:
       bones: []
       spriteID: 934ad243a6463e1469692c55a3e30f94
       internalID: -1713413781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barrel-1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 13
+        width: 5
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9efbc2de7dcc90f4bb721b0a2a432026
+      internalID: 347942287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stock-1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 9
+        width: 5
+        height: 3
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07a3990a0a9c0a640b7cdde2ac4aabdf
+      internalID: 177124650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ricochet-bullet
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 11
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 902ccdb9893b4e64e88372e042fa21b1
+      internalID: 720539007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: go-thru-bullet
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 7
+        width: 3
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29873439714f2ca47b61dba760ffc09f
+      internalID: -1153701744
       vertices: []
       indices: 
       edges: []
@@ -170,8 +258,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      barrel-1: 347942287
+      go-thru-bullet: -1153701744
       player-bullet: -1713413781
       player-pistol: 6575844457371078756
+      ricochet-bullet: 720539007
+      stock-1: 177124650
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

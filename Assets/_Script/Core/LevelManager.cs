@@ -18,9 +18,12 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
     [SerializeField] private Transform m_playerSpawnPoint;
 
     [Header("Level Settings")] 
+    [SerializeField] private int m_numLevelPassedBeforeShop;
+    [SerializeField] private GameObject m_shopLevelPrefab;
     [SerializeField] private LevelContainer m_lvlEasyContainer;
     [SerializeField] private Transform m_levelSpawnPointParent;
 
+    private int m_roomHasPassed = 1;
     private HashSet<EnemyHealth> m_enemiesGroups = new HashSet<EnemyHealth>();
     private Transform m_player;
     private GameObject m_currentLevel;
@@ -62,6 +65,7 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
 
     private IEnumerator OnLoadNextLevel()
     {
+        m_roomHasPassed++;
         InputManager.SetActive(false);
 
         m_loadingScreenEventData.TransitionType = TransitionType.RANDOM;
@@ -113,8 +117,18 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
             Debug.LogError("LevelContainer is null");
             yield break;       
         }
+
+        if (m_roomHasPassed > m_numLevelPassedBeforeShop)
+        {
+            //Spawn shop level every x levels
+            m_roomHasPassed = 0;
+            m_currentLevel = Instantiate(m_shopLevelPrefab, m_levelSpawnPointParent);
+        }
+        else
+        {
+            m_currentLevel = Instantiate(levelContainer.GetRandomLevelPrefab(), m_levelSpawnPointParent);
+        }
         
-        m_currentLevel = Instantiate(levelContainer.GetRandomLevelPrefab(), m_levelSpawnPointParent);
         yield return new WaitForEndOfFrame();
         m_gameEvent.Raise(GameEventType.CreatedLevel);
     }
