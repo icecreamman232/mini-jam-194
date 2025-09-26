@@ -83,7 +83,7 @@ namespace SGGames.Script.UI
         private IEnumerator OnFadeIn(float duration, TransitionType transitionType)
         {
             m_lastTransitionType = transitionType == TransitionType.RANDOM ? GetRandomTransition() : transitionType;
-            
+
             Material transitionMaterial = GetMaterialForTransition(m_lastTransitionType);
             if(transitionMaterial == null) yield break;
             m_transitionFadeInImage.gameObject.SetActive(true);
@@ -135,7 +135,6 @@ namespace SGGames.Script.UI
         {
             if (eventData.LoadingType == LoadingScreenEventType.FadeIn)
             {
-                Debug.Log("Fade In");
                 StartCoroutine(OnFadeIn(eventData.Duration, eventData.TransitionType));
             }
             else if (eventData.LoadingType == LoadingScreenEventType.FadeOut)

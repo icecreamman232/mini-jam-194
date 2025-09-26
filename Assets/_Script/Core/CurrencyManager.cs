@@ -1,9 +1,12 @@
+using System;
 using SGGames.Script.Core;
 using UnityEngine;
 
 public class CurrencyManager : MonoBehaviour, IGameService, IBootStrap
 {
     [SerializeField] private int m_coins;
+    
+    public Action<int> OnCoinChange;
     
     public void Install()
     {
@@ -18,12 +21,14 @@ public class CurrencyManager : MonoBehaviour, IGameService, IBootStrap
     public void AddCoin(int amount)
     {
         m_coins += amount;
+        OnCoinChange?.Invoke(m_coins);
     }
 
     public bool SpendCoin(int amount)
     {
         if(amount > m_coins) return false;
         m_coins -= amount;
+        OnCoinChange?.Invoke(m_coins);
         return true;
     }
 }

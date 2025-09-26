@@ -53,8 +53,18 @@ public class Coin : PickupBehavior, IPickup
 
     public void Picking(Transform player)
     {
-        StopCoroutine(m_flickerCoroutine);
-        StopCoroutine(m_selfDestructionCoroutine);
+        if (m_flickerCoroutine != null)
+        {
+            StopCoroutine(m_flickerCoroutine);
+            m_flickerCoroutine = null;
+        }
+
+        if (m_selfDestructionCoroutine != null)
+        {
+            StopCoroutine(m_selfDestructionCoroutine);
+            m_selfDestructionCoroutine = null;
+        }
+        
         m_model.color = Color.white;
         MoveToPlayer(player, Pickup);
     }
