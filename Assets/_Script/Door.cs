@@ -40,14 +40,19 @@ public class Door : MonoBehaviour
         player.transform.DOMove(m_centerPoint.position, 0.3f)
             .OnComplete(() =>
             {
-                m_spriteMask.enabled = true;
-                var currentLocalY = player.transform.localPosition.y;
-                player.transform.DOMoveY(currentLocalY - 1f, 1f)
-                    .SetEase(Ease.InCirc)
-                    .OnComplete(() =>
-                    {
-                        player.HideVisual();
-                    });
+                SinkDownAnim(player);
+            });
+    }
+
+    private void SinkDownAnim(PlayerController player)
+    {
+        m_spriteMask.enabled = true;
+        var currentLocalY = player.transform.localPosition.y;
+        player.transform.DOMoveY(currentLocalY - 1f, 1f)
+            .SetEase(Ease.InCirc)
+            .OnComplete(() =>
+            {
+                player.HideVisual();
             });
     }
     
