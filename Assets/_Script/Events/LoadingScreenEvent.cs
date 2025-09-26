@@ -26,6 +26,6 @@ namespace SGGames.Script.Events
     {
         public LoadingScreenEventType LoadingType;
         public TransitionType TransitionType = TransitionType.RANDOM;
-        public float Duration = 3f;
+        public float Duration = 1.5f;
     }
 }

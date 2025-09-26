@@ -18,7 +18,7 @@ public class BurrowAI : EnemyAI
     private bool m_isFollowingPlayer;
     private bool m_isAttacking;
     private readonly int m_attackAnimParam = Animator.StringToHash("Attack");
-    private const float k_AttackAnimDuration = 1.7f;
+    private const float k_AttackAnimDuration = 2.1f;
     
 
     private void Start()

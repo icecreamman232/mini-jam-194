@@ -745,6 +745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_movement: {fileID: 5445442434412354440}
   m_handler: {fileID: 579525936648184841}
+  m_model: {fileID: 1225310110348759506}
 --- !u!114 &5445442434412354440
 MonoBehaviour:
   m_ObjectHideFlags: 0

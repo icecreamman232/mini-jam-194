@@ -27,7 +27,7 @@ namespace SGGames.Script.UI
         [SerializeField] private LoadingScreenEvent m_loadingScreenEvent;
         
         private TransitionType m_lastTransitionType;
-        public static float k_DefaultLoadingDuration = 3f;
+        public static float k_DefaultLoadingDuration = 1.5f;
         private static readonly int Cutoff = Shader.PropertyToID("_Cutoff");
         private static readonly int IsHorizontal = Shader.PropertyToID("_IsHorizontal");
 
@@ -135,6 +135,7 @@ namespace SGGames.Script.UI
         {
             if (eventData.LoadingType == LoadingScreenEventType.FadeIn)
             {
+                Debug.Log("Fade In");
                 StartCoroutine(OnFadeIn(eventData.Duration, eventData.TransitionType));
             }
             else if (eventData.LoadingType == LoadingScreenEventType.FadeOut)

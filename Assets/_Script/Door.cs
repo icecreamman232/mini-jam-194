@@ -8,6 +8,7 @@ public class Door : MonoBehaviour
     [SerializeField] private Collider2D m_collider;
     [SerializeField] private GameEvent m_gameEvent;
     [SerializeField] private Transform m_centerPoint;
+    private PlayerController m_playerRef;
     
     private void Awake()
     {
@@ -37,22 +38,24 @@ public class Door : MonoBehaviour
 
     private void PlayGoToDoorAnimation(PlayerController player)
     {
+        m_playerRef = player;
         player.transform.DOMove(m_centerPoint.position, 0.3f)
             .OnComplete(() =>
             {
-                SinkDownAnim(player);
+                SinkDownAnim();
             });
     }
 
-    private void SinkDownAnim(PlayerController player)
+    private void SinkDownAnim()
     {
         m_spriteMask.enabled = true;
-        var currentLocalY = player.transform.localPosition.y;
-        player.transform.DOMoveY(currentLocalY - 1f, 1f)
+        var currentLocalY = m_playerRef.transform.localPosition.y;
+        m_playerRef.transform.DOMoveY(currentLocalY - 1f, 1f)
             .SetEase(Ease.InCirc)
             .OnComplete(() =>
             {
-                player.HideVisual();
+                m_playerRef.HideVisual();
+                m_gameEvent.Raise(GameEventType.LoadNextLevel);
             });
     }
     
@@ -61,6 +64,10 @@ public class Door : MonoBehaviour
         if (gameEventType == GameEventType.OpenDoor)
         {
             ShowDoor();
+        }
+        else if(gameEventType == GameEventType.CreatedLevel)
+        {
+            HideDoor();      
         }
     }
 

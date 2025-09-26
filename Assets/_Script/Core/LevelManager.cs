@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using SGGames.Script.Core;
+using SGGames.Script.Events;
+using SGGames.Script.UI;
 using SGGames.Scripts.System;
 using UnityEngine;
 
@@ -10,6 +12,7 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
     [Header("Events")] 
     [SerializeField] private RegisterEnemyEvent m_registerEnemyEvent;
     [SerializeField] private GameEvent m_gameEvent;
+    [SerializeField] private LoadingScreenEvent m_loadingScreenEvent;
     [Header("Player Settings")]
     [SerializeField] private GameObject m_playerPrefab;
     [SerializeField] private Transform m_playerSpawnPoint;
@@ -21,6 +24,7 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
     private HashSet<EnemyHealth> m_enemiesGroups = new HashSet<EnemyHealth>();
     private Transform m_player;
     private GameObject m_currentLevel;
+    private LoadingScreenEventData m_loadingScreenEventData = new LoadingScreenEventData();
     
     public Transform Player => m_player;
     
@@ -43,13 +47,48 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
 
     private IEnumerator OnLoadFirstLevel()
     {
+        InputManager.SetActive(false);
+        
         yield return StartCoroutine(InstantiatePlayer());
+        
+        InputManager.SetActive(true);
+        
         yield return StartCoroutine(CreateLevel());
 
 
         yield return new WaitForSeconds(1f);
         m_gameEvent.Raise(GameEventType.LevelStarted);
     }
+
+    private IEnumerator OnLoadNextLevel()
+    {
+        InputManager.SetActive(false);
+
+        m_loadingScreenEventData.TransitionType = TransitionType.RANDOM;
+        m_loadingScreenEventData.LoadingType = LoadingScreenEventType.FadeIn;
+        m_loadingScreenEvent.Raise(m_loadingScreenEventData);
+        yield return new WaitForSeconds(LoadingScreenController.k_DefaultLoadingDuration);
+        
+        Destroy(m_currentLevel);
+        yield return new WaitForEndOfFrame();
+        m_player.position = m_playerSpawnPoint.position;
+        yield return new WaitForEndOfFrame();
+        
+        yield return StartCoroutine(CreateLevel());
+        
+        m_loadingScreenEventData.TransitionType = TransitionType.RANDOM;       
+        m_loadingScreenEventData.LoadingType = LoadingScreenEventType.FadeOut;
+        m_loadingScreenEvent.Raise(m_loadingScreenEventData);
+        var playerController = m_player.GetComponent<PlayerController>();
+        playerController.UnFreeze();
+        
+        yield return new WaitForSeconds(LoadingScreenController.k_DefaultLoadingDuration);
+        
+        InputManager.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        m_gameEvent.Raise(GameEventType.LevelStarted);
+    }
+    
 
     private IEnumerator InstantiatePlayer()
     {
@@ -101,6 +140,10 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
     
     private void OnReceiveGameEvent(GameEventType eventType)
     {
-        
+        if (eventType == GameEventType.LoadNextLevel)
+        {
+            Debug.Log("Load Next Level");
+            StartCoroutine(OnLoadNextLevel());
+        }
     }
 }

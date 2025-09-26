@@ -31,6 +31,11 @@ public class PlayerMovement : MonoBehaviour
     public void SetCanMove(bool canMove)
     {
         m_canMove = canMove;
+        if (!m_canMove)
+        {
+            m_moveDirection = Vector2.zero;
+            m_animator.SetBool(m_runningBooleanAnimParam, false);
+        }
     }
     
     private void OnReceiveMovementInput(Vector2 moveDirection)

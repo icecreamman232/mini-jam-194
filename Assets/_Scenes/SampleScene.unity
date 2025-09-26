@@ -2316,6 +2316,7 @@ MonoBehaviour:
   m_levelGrade: 0
   m_registerEnemyEvent: {fileID: 11400000, guid: e814b697bc4209649ada792298804b0b, type: 2}
   m_gameEvent: {fileID: 11400000, guid: f828936b11b180a4386e6b951e5e1622, type: 2}
+  m_loadingScreenEvent: {fileID: 11400000, guid: 7f76adf9768c11b419b43b9a3194b8c7, type: 2}
   m_playerPrefab: {fileID: 5640862656023170574, guid: d20da4de4edaa1941a858a0797b73f40, type: 3}
   m_playerSpawnPoint: {fileID: 814955118}
   m_lvlEasyContainer: {fileID: 11400000, guid: f2edda6dcb1157d48b6a92dba379598c, type: 2}

@@ -14,4 +14,5 @@ public enum GameEventType
     RegisterEnemy,
     LevelStarted,
     OpenDoor,
+    LoadNextLevel,
 }
