@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6e7211706a9515444beadabaecf16c8c
+guid: eaa2c4407f8bae445832620a7b81e67f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5707218116961789024
-    second: ui_0
+      213: 1729840402284382006
+    second: item_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ui_0
+      name: coin
       rect:
         serializedVersion: 2
         x: 0
@@ -126,76 +126,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0646e25a3ac143f40800000000000000
-      internalID: 5707218116961789024
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: heart-empty
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c376866a98b683743b613dd30fc452b2
-      internalID: -1769618758
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: heart-full
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 099daa560153fca4ebc592e529850412
-      internalID: -837325452
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ui_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f947fe35b626182498068c53573aa863
-      internalID: -934555352
+      spriteID: fa0f9ea1e38ae4b47b1b82e11036dde8
+      internalID: -1500299977
       vertices: []
       indices: 
       edges: []
@@ -204,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e2d132077bc81354db8fda3519d09e30
+    spriteID: 3c7acc32484d79147b2b4eb3d5181993
     internalID: 0
     vertices: []
     indices: 
@@ -214,10 +148,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      heart-empty: -1769618758
-      heart-full: -837325452
-      ui_0: 5707218116961789024
-      ui_1: -934555352
+      coin: -1500299977
+      item_0: 1729840402284382006
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

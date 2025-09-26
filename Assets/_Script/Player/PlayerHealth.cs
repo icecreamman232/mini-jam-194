@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerHealth : Health
 {
+    #if UNITY_EDITOR
+    [SerializeField] private bool m_godMode;
+    #endif
     [SerializeField] private SpriteRenderer m_model;
     [SerializeField] private PlayerHealthEvent m_healthEvent;
     private HealthEventData m_healthEventData = new HealthEventData();
@@ -26,6 +29,14 @@ public class PlayerHealth : Health
         m_healthEvent.Raise(m_healthEventData);
         base.UpdateHealthBar();
     }
+
+    #if UNITY_EDITOR
+    protected override bool CanTakeDamage()
+    {
+        if (m_godMode) return false;
+        return base.CanTakeDamage();
+    }
+    #endif
 
     protected override void Damage(float damage)
     {
