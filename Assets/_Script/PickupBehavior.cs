@@ -10,7 +10,7 @@ public class PickupBehavior : MonoBehaviour
     private readonly float m_flyingSpeed = 20;
     private readonly float m_disableColliderDuration = 0.5f;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         StartCoroutine(DisableColliderForDuration());
     }
@@ -39,7 +39,6 @@ public class PickupBehavior : MonoBehaviour
             
         yield return new WaitUntil(()=> tweenComplete);
         
-        Debug.Log("Tweens complete");
         var distToPlayer = Vector2.Distance(transform.position, playerTransform.position);
         while (distToPlayer > 0.01f)
         {

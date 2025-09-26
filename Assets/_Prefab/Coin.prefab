@@ -209,3 +209,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_boxCollider2D: {fileID: 4140307136479230891}
   m_isMovingTowardPlayer: 0
+  m_model: {fileID: 7221699439901365181}
+  m_delayBeforeSelfDestruction: 5

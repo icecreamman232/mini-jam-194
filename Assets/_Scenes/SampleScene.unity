@@ -221,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_bootStrap:
   - {fileID: 1437858563}
+  - {fileID: 1406622894}
   - {fileID: 1712807223}
 --- !u!1 &519420028
 GameObject:
@@ -2314,6 +2315,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1406622892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1406622893}
+  - component: {fileID: 1406622894}
+  m_Layer: 0
+  m_Name: CurrencyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1406622893
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406622892}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1406622894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406622892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56261dfe677b0504181a5fa5eb28239b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_coins: 0
 --- !u!1 &1437858562
 GameObject:
   m_ObjectHideFlags: 0
@@ -3129,10 +3175,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4140307136479230891, guid: 1577c45db2a9fcb41b3d3f37fa201aa3, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6428090426653637208, guid: 1577c45db2a9fcb41b3d3f37fa201aa3, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -3151,6 +3193,7 @@ SceneRoots:
   - {fileID: 491396992}
   - {fileID: 1437858564}
   - {fileID: 1712807222}
+  - {fileID: 1406622893}
   - {fileID: 1859752735}
   - {fileID: 1382527771}
   - {fileID: 2072660883}
