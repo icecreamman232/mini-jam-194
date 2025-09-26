@@ -1045,6 +1045,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_model: {fileID: 1993797348}
   m_collider: {fileID: 1093470718}
+  m_gameEvent: {fileID: 11400000, guid: f828936b11b180a4386e6b951e5e1622, type: 2}
 --- !u!1 &1322096324
 GameObject:
   m_ObjectHideFlags: 0

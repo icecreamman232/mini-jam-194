@@ -434,6 +434,7 @@ GameObject:
   - component: {fileID: 1572201488386201785}
   - component: {fileID: 1409496239424732086}
   - component: {fileID: 4487675722800395882}
+  - component: {fileID: -6244373597464963015}
   - component: {fileID: 7134787897514158423}
   - component: {fileID: 485932785658453456}
   - component: {fileID: 4342318507483957667}
@@ -539,6 +540,23 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &-6244373597464963015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7102736623771362296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67945c051c664b8428f88c9ced80e4c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_health: {fileID: 7134787897514158423}
+  m_movement: {fileID: 485932785658453456}
+  m_ai: {fileID: 4342318507483957667}
+  m_model: {fileID: 9195777817333397977}
+  m_gameEvent: {fileID: 11400000, guid: f828936b11b180a4386e6b951e5e1622, type: 2}
 --- !u!114 &7134787897514158423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,6 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83e6ce9ff021cc409e4d6e88c04be41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_canMove: 0
   m_speed: 2
   m_rigidbody: {fileID: 4487675722800395882}
   m_model: {fileID: 9195777817333397977}
@@ -585,6 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb3018768e5e5e2498234268017c75f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_canThink: 0
   m_health: {fileID: 7134787897514158423}
   m_movement: {fileID: 485932785658453456}
   m_weaponLeft: {fileID: 7500256763169870348}

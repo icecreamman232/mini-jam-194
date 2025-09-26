@@ -3,7 +3,7 @@ using SGGames.Script.Core;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class SquidAI : MonoBehaviour
+public class SquidAI : EnemyAI
 {
     [SerializeField] private Animator m_animator;
     [SerializeField] private EnemyMovement m_movement;
@@ -41,6 +41,7 @@ public class SquidAI : MonoBehaviour
     private void Update()
     {
         if(!this.gameObject.activeSelf) return;
+        if(!m_canThink) return;
 
         if (m_isFollowingPlayer)
         {

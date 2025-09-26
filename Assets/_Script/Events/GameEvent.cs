@@ -12,4 +12,6 @@ public enum GameEventType
     CreatedPlayer,
     CreatedLevel,
     RegisterEnemy,
+    LevelStarted,
+    OpenDoor,
 }

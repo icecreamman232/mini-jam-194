@@ -45,6 +45,10 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
     {
         yield return StartCoroutine(InstantiatePlayer());
         yield return StartCoroutine(CreateLevel());
+
+
+        yield return new WaitForSeconds(1f);
+        m_gameEvent.Raise(GameEventType.LevelStarted);
     }
 
     private IEnumerator InstantiatePlayer()

@@ -2,7 +2,7 @@ using System.Collections;
 using SGGames.Script.Core;
 using UnityEngine;
 
-public class BurrowAI : MonoBehaviour
+public class BurrowAI : EnemyAI
 {
     [SerializeField] private EnemyHealth m_health;
     [SerializeField] private EnemyMovement m_movement;
@@ -40,6 +40,7 @@ public class BurrowAI : MonoBehaviour
     private void Update()
     {
         if (!this.gameObject.activeSelf) return;
+        if (!m_canThink) return;
 
         if (m_isFollowingPlayer)
         {

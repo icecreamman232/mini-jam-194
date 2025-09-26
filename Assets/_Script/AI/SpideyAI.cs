@@ -33,6 +33,7 @@ public class SpideyAI : EnemyAI
    private void Update()
    {
       if (!this.gameObject.activeSelf) return;
+      if(!m_canThink) return;
       
       if (m_isRest)
       {
