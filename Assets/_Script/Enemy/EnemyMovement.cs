@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour , IKnockback
@@ -8,8 +10,17 @@ public class EnemyMovement : MonoBehaviour , IKnockback
     [SerializeField] private SpriteRenderer m_model;
     [SerializeField] private Animator m_animator;
     
+    private HashSet<int> m_animatorParamHashes = new HashSet<int>();
     private Vector2 m_moveDirection;
     private readonly int m_RunningBooleanAnimParam = Animator.StringToHash("Is Running");
+
+    private void Start()
+    {
+        foreach(var animatorParam in m_animator.parameters)
+        {
+            m_animatorParamHashes.Add(animatorParam.nameHash);
+        }
+    }
 
     public void SetCanMove(bool canMove)
     {
@@ -23,7 +34,11 @@ public class EnemyMovement : MonoBehaviour , IKnockback
         {
             FlipModel(moveDirection.x < 0);
         }
-        m_animator.SetBool(m_RunningBooleanAnimParam, m_moveDirection != Vector2.zero);
+
+        if (m_animatorParamHashes.Contains(m_RunningBooleanAnimParam))
+        {
+            m_animator.SetBool(m_RunningBooleanAnimParam, m_moveDirection != Vector2.zero);
+        }
     }
     
     private void FixedUpdate()
