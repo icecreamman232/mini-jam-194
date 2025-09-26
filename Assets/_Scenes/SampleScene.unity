@@ -2488,18 +2488,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1599562408403047726, guid: 03a74fae48150ae44b1bc18aa46f7436, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1599562408403047726, guid: 03a74fae48150ae44b1bc18aa46f7436, type: 3}
-      propertyPath: m_Color.g
-      value: 0.14117648
-      objectReference: {fileID: 0}
-    - target: {fileID: 1599562408403047726, guid: 03a74fae48150ae44b1bc18aa46f7436, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3359157445544725174, guid: 03a74fae48150ae44b1bc18aa46f7436, type: 3}
       propertyPath: m_Name
       value: LoadingScreen
@@ -2583,18 +2571,6 @@ PrefabInstance:
     - target: {fileID: 6632131485928277644, guid: 03a74fae48150ae44b1bc18aa46f7436, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8992072750364437349, guid: 03a74fae48150ae44b1bc18aa46f7436, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8992072750364437349, guid: 03a74fae48150ae44b1bc18aa46f7436, type: 3}
-      propertyPath: m_Color.g
-      value: 0.14117648
-      objectReference: {fileID: 0}
-    - target: {fileID: 8992072750364437349, guid: 03a74fae48150ae44b1bc18aa46f7436, type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
