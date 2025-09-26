@@ -93,6 +93,7 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
             {
                 //Room is cleared
                 Debug.Log("Room is cleared");
+                m_gameEvent.Raise(GameEventType.OpenDoor);
             }
         }
     }

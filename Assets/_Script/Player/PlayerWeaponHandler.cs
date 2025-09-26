@@ -6,7 +6,7 @@ public class PlayerWeaponHandler : MonoBehaviour
     [SerializeField] private Transform m_weaponPivot;
     [SerializeField] private PlayerWeapon m_weapon;
     [SerializeField] private Rigidbody2D m_rigidbody;
-    
+    private bool m_canUse = true;
     
     private Vector2 m_aimDirection;
     private bool m_isFlipped;
@@ -25,13 +25,20 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     private void Update()
     {
+        if (!m_canUse) return;
         if (!this.gameObject.activeInHierarchy) return;
         m_aimDirection = (InputManager.GetWorldMousePosition() - m_weapon.ShootingPivot.position).normalized;
         UpdateWeaponRotation();
     }
 
+    public void SetCanUse(bool canUse)
+    {
+        m_canUse = canUse;
+    }
+
     private void OnAttackInputCallback()
     {
+        if (!m_canUse) return;
         if (m_weapon.IsReloading) return;
         if (m_weapon.Shoot(m_aimDirection))
         {
@@ -41,6 +48,7 @@ public class PlayerWeaponHandler : MonoBehaviour
     
     private void OnReloadInputCallback()
     {
+        if (!m_canUse) return;
         if (m_weapon.IsReloading) return;
         if (!m_weapon.CanShoot) return;
         m_weapon.ManualReload();

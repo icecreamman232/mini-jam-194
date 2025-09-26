@@ -18,7 +18,6 @@ public class EnemyMovement : MonoBehaviour , IKnockback
     
     public void ChangeMoveDirection(Vector2 moveDirection)
     {
-        if (!m_canMove) return;
         m_moveDirection = moveDirection;
         if (moveDirection.x != 0)
         {
