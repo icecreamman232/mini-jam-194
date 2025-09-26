@@ -32,6 +32,7 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     private void OnAttackInputCallback()
     {
+        if (m_weapon.IsReloading) return;
         if (m_weapon.Shoot(m_aimDirection))
         {
             m_rigidbody.AddForce(-m_aimDirection * (100f * m_weapon.RecoilForce));
@@ -40,6 +41,8 @@ public class PlayerWeaponHandler : MonoBehaviour
     
     private void OnReloadInputCallback()
     {
+        if (m_weapon.IsReloading) return;
+        if (!m_weapon.CanShoot) return;
         m_weapon.ManualReload();
     }
 

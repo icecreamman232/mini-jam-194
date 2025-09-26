@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[SelectionBase]
 public class EnemyHealth : Health
 {
     [SerializeField] private bool m_isNoDamage;

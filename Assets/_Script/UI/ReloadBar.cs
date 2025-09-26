@@ -21,7 +21,7 @@ public class ReloadBar : MonoBehaviour
 
     private void UpdateReloadingBar(ReloadEventData eventData)
     {
-        if (eventData.CurrentReloadTime >= 0)
+        if (eventData.CurrentReloadTime >= 0 && eventData.CurrentReloadTime < eventData.MaxReloadTime)
         {
             m_canvasGroup.alpha = 1;
         }

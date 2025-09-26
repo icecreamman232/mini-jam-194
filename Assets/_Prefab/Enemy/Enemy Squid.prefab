@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 120
   m_currentHealth: 0
+  m_isNoDamage: 0
   m_model: {fileID: 8270683931114283237}
   m_healthBar: {fileID: 7579051097814442274}
 --- !u!114 &1978579114650893923
@@ -141,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83e6ce9ff021cc409e4d6e88c04be41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 3
+  m_speed: 4
   m_rigidbody: {fileID: 4987777761873235448}
   m_model: {fileID: 8270683931114283237}
   m_animator: {fileID: 7512998768536957238}

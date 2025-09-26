@@ -15,7 +15,9 @@ public class PlayerWeapon : Weapon
     
     public float RecoilForce => m_recoilForce;
     public Transform ShootingPivot => m_shootingPivot;
+    public bool IsReloading => m_isReloading;
 
+    private bool m_isReloading;
     private ReloadEventData m_reloadEventData = new ReloadEventData();
     private float m_reloadTimer;
     private const float k_DefaultDifferentAngle = 12;
@@ -37,6 +39,7 @@ public class PlayerWeapon : Weapon
 
     public void ManualReload()
     {
+        if (m_isReloading) return;
         StartCoroutine(OnReloading());
     }
 
@@ -61,7 +64,7 @@ public class PlayerWeapon : Weapon
 
     private IEnumerator OnReloading()
     {
-        m_canShoot = false;
+        m_isReloading = true;
         var timeStop = Time.time + m_reloadTime;
         while (timeStop > Time.time)
         {
@@ -76,6 +79,6 @@ public class PlayerWeapon : Weapon
         m_playerMagazineEvent.Raise(m_currrentMagazine);
         
         m_reloadTimer = 0;
-        m_canShoot = true;
+        m_isReloading = false;
     }
 }
