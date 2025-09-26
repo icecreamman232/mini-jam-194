@@ -37,6 +37,21 @@ public class PlayerWeapon : Weapon
         return finalDirection;
     }
 
+    #region Modification Methods
+    public void ModifyAccuracy(float accuracy)
+    {
+        m_accuracy += accuracy;
+        m_accuracy = Mathf.Clamp(m_accuracy, 1, 5);
+    }
+    
+    public void ModifyRecoilForce(float recoilForce)
+    {
+        m_recoilForce += recoilForce;
+        m_recoilForce = Mathf.Clamp(m_recoilForce, 0, 10);
+    }
+    
+    #endregion
+
     public void ManualReload()
     {
         if (m_isReloading) return;

@@ -10,6 +10,8 @@ public class PlayerWeaponHandler : MonoBehaviour
     
     private Vector2 m_aimDirection;
     private bool m_isFlipped;
+
+    public PlayerWeapon Weapon => m_weapon;
     
     private void Start()
     {

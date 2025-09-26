@@ -10,6 +10,8 @@ public class ItemManager : MonoBehaviour, IGameService, IBootStrap
    
    private HashSet<ItemData> m_availableItems = new HashSet<ItemData>();
    private List<ItemData> m_ownedItems = new List<ItemData>();
+   
+   private Dictionary<ModifierType, ItemModifier> m_modifiers = new Dictionary<ModifierType, ItemModifier>();
 
    public void Install()
    {
@@ -18,6 +20,8 @@ public class ItemManager : MonoBehaviour, IGameService, IBootStrap
       {
          m_availableItems.Add(item);
       }
+
+      SetupModifiers();
    }
 
    public void Uninstall()
@@ -39,5 +43,16 @@ public class ItemManager : MonoBehaviour, IGameService, IBootStrap
    {
       m_ownedItems.Add(item);
       m_announcer.Show(item);
+
+      foreach (var modifier in item.Modifiers)
+      {
+         m_modifiers[modifier.Type].Apply(modifier.Value);
+      }
+   }
+   
+   private void SetupModifiers()
+   {
+      m_modifiers.Add(ModifierType.WeaponAccuracy, new AccuracyModifier());
+      m_modifiers.Add(ModifierType.WeaponRecoil, new RecoilModifier());
    }
 }

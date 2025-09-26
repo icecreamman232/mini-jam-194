@@ -4,6 +4,7 @@ Shader "SGGames/Wave"
     {
         _MainTex ("Texture", 2D) = "white" {}
         _GradientTex ("Gradient", 2D) = "white" {}
+        _TintColor ("Tint Color", Color) = (0,0,0,1)
         _Cutoff ("Cutoff Value", Range(0, 1)) = 0.5
     }
     SubShader
@@ -45,6 +46,7 @@ Shader "SGGames/Wave"
             sampler2D _GradientTex;
             float4 _MainTex_ST;
             float _Cutoff;
+            fixed4 _TintColor;
 
             v2f vert (appdata v)
             {
@@ -59,7 +61,7 @@ Shader "SGGames/Wave"
                 fixed4 p = tex2D(_GradientTex, i.uv);
                 if (p.r < _Cutoff)
                 {
-                    return fixed4(0, 0, 0, 1);
+                    return _TintColor;
                 }
                 else
                 {

@@ -16,3 +16,6 @@ MonoBehaviour:
   Icon: {fileID: 177124650, guid: 0c73e4e38bbef5c499d75f3b114d6194, type: 3}
   Name: Stablizer Stock
   Description: Reduce recoil effect
+  Modifiers:
+  - Type: 0
+    Value: -0.5

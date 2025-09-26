@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Item Data", menuName = "SGGames/Item Data")]
@@ -8,4 +9,18 @@ public class ItemData : ScriptableObject
     public string Name;
     [TextArea(3,10)]
     public string Description;
+    public ModifierData[] Modifiers;
+}
+
+[Serializable]
+public class ModifierData
+{
+    public ModifierType Type;
+    public float Value;
+}
+
+public enum ModifierType
+{
+    WeaponRecoil,
+    WeaponAccuracy,
 }

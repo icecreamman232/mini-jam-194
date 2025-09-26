@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerWeaponHandler m_handler;
     [SerializeField] private SpriteRenderer m_model;
     
+    public PlayerWeaponHandler WeaponHandler => m_handler;
+    
 
     public void Freeze()
     {
