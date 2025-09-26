@@ -21,8 +21,8 @@ public class LevelContainer : ScriptableObject
         return m_levelPrefabs[index];
     }
 
-    public int GetRandomLevelPrefab()
+    public GameObject GetRandomLevelPrefab()
     {
-        return Random.Range(0, m_levelPrefabs.Length);
+        return m_levelPrefabs[Random.Range(0, m_levelPrefabs.Length)];
     }
 }

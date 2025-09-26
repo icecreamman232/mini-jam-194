@@ -6,6 +6,7 @@ public class EnemyHealth : Health
 {
     [SerializeField] private bool m_isNoDamage;
     [SerializeField] private SpriteRenderer m_model;
+    [SerializeField] private RegisterEnemyEvent m_registerEnemyEvent;
     private MaterialPropertyBlock m_materialPropertyBlock;
     private readonly int BlendAmount = Shader.PropertyToID("_BlendAmount");
     [SerializeField] private EnemyHealthBar m_healthBar;
@@ -14,6 +15,11 @@ public class EnemyHealth : Health
     {
         m_materialPropertyBlock = new MaterialPropertyBlock();
         base.Start();
+        m_registerEnemyEvent.Raise(new RegisteredEnemyData()
+        {
+            State = EnemyState.Alive,
+            EnemyHealth = this
+        });
     }
 
     public void SetNoDamage(bool isNoDamage)
@@ -57,5 +63,15 @@ public class EnemyHealth : Health
         m_model.SetPropertyBlock(m_materialPropertyBlock);
         
         m_isInvulnerable = false;
+    }
+
+    protected override void Die()
+    {
+        m_registerEnemyEvent.Raise(new RegisteredEnemyData
+        {
+            State = EnemyState.Dead,
+            EnemyHealth = this
+        });
+        base.Die();
     }
 }

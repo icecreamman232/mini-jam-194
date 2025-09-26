@@ -10,4 +10,6 @@ public class GameEvent : ScriptableEvent<GameEventType>
 public enum GameEventType
 {
     CreatedPlayer,
+    CreatedLevel,
+    RegisterEnemy,
 }

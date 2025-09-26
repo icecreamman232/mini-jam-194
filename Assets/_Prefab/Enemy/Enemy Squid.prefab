@@ -129,6 +129,7 @@ MonoBehaviour:
   m_currentHealth: 0
   m_isNoDamage: 0
   m_model: {fileID: 8270683931114283237}
+  m_registerEnemyEvent: {fileID: 11400000, guid: e814b697bc4209649ada792298804b0b, type: 2}
   m_healthBar: {fileID: 7579051097814442274}
 --- !u!114 &1978579114650893923
 MonoBehaviour:

@@ -334,7 +334,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_maxHealth: 50
   m_currentHealth: 0
+  m_isNoDamage: 0
   m_model: {fileID: 8502710682688258384}
+  m_registerEnemyEvent: {fileID: 11400000, guid: e814b697bc4209649ada792298804b0b, type: 2}
   m_healthBar: {fileID: 5922842420384027940}
 --- !u!114 &2018168641184958027
 MonoBehaviour:
