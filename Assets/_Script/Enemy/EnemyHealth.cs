@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,9 +8,10 @@ public class EnemyHealth : Health
     [SerializeField] private bool m_isNoDamage;
     [SerializeField] private SpriteRenderer m_model;
     [SerializeField] private RegisterEnemyEvent m_registerEnemyEvent;
+    [SerializeField] private EnemyHealthBar m_healthBar;
     private MaterialPropertyBlock m_materialPropertyBlock;
     private readonly int BlendAmount = Shader.PropertyToID("_BlendAmount");
-    [SerializeField] private EnemyHealthBar m_healthBar;
+    public Action OnDeath;
 
     protected override void Start()
     {
@@ -73,5 +75,6 @@ public class EnemyHealth : Health
             EnemyHealth = this
         });
         base.Die();
+        OnDeath?.Invoke();
     }
 }
