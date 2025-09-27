@@ -159,5 +159,9 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
             Debug.Log("Load Next Level");
             StartCoroutine(OnLoadNextLevel());
         }
+        else if (eventType == GameEventType.GameOver)
+        {
+            InputManager.SetActive(false);
+        }
     }
 }

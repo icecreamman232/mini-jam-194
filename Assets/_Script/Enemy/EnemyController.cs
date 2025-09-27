@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -32,6 +31,13 @@ public class EnemyController : MonoBehaviour
          var currentColor = m_model.color;
          currentColor.a = 1f;
          m_model.color = currentColor;
+      }
+      else if(gameEventType == GameEventType.GameOver)
+      {
+         m_movement.SetCanMove(false);
+         m_ai.SetCanThink(false);
+         
+         this.gameObject.SetActive(false);
       }
    }
 }

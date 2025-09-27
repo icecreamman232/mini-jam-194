@@ -10,6 +10,7 @@ public class PlayerHealth : Health
     #endif
     [SerializeField] private SpriteRenderer m_model;
     [SerializeField] private PlayerHealthEvent m_healthEvent;
+    [SerializeField] private GameEvent m_gameEvent;
     private HealthEventData m_healthEventData = new HealthEventData();
     private CameraController m_cameraController;
     private MaterialPropertyBlock m_materialPropertyBlock;
@@ -72,5 +73,11 @@ public class PlayerHealth : Health
         m_model.SetPropertyBlock(m_materialPropertyBlock);
         
         m_isInvulnerable = false;
+    }
+
+    protected override void Die()
+    {
+        m_gameEvent.Raise(GameEventType.GameOver);
+        base.Die();
     }
 }
