@@ -9,6 +9,7 @@ public class ItemData : ScriptableObject
     public string Name;
     [TextArea(3,10)]
     public string Description;
+    public float ToxicPoint;
     public ModifierData[] Modifiers;
 }
 

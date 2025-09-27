@@ -3029,7 +3029,7 @@ MonoBehaviour:
   m_loadingScreenEvent: {fileID: 11400000, guid: 7f76adf9768c11b419b43b9a3194b8c7, type: 2}
   m_playerPrefab: {fileID: 5640862656023170574, guid: d20da4de4edaa1941a858a0797b73f40, type: 3}
   m_playerSpawnPoint: {fileID: 814955118}
-  m_numLevelPassedBeforeShop: 1
+  m_numLevelPassedBeforeShop: 0
   m_shopLevelPrefab: {fileID: 6194074245778431931, guid: 1bd98014bd63eb744a72d247b68eb718, type: 3}
   m_lvlEasyContainer: {fileID: 11400000, guid: f2edda6dcb1157d48b6a92dba379598c, type: 2}
   m_levelSpawnPointParent: {fileID: 1859752735}
@@ -3651,6 +3651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfbb4b51a7642a74e98c7b0b24beb9ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerCollectToxicEvent: {fileID: 11400000, guid: 159dc88643f149042b2ff1ffc4cea5ae, type: 2}
   m_announcer: {fileID: 2082594290}
   m_items:
   - {fileID: 11400000, guid: 9a44322c812219b4e8e41a34711a61d2, type: 2}

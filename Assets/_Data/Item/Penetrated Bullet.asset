@@ -16,3 +16,5 @@ MonoBehaviour:
   Icon: {fileID: -1153701744, guid: 0c73e4e38bbef5c499d75f3b114d6194, type: 3}
   Name: Penetrated Bullet
   Description: Go thru enemy
+  ToxicPoint: 2
+  Modifiers: []

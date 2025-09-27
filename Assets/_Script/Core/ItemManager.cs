@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour, IGameService, IBootStrap
 {
+   [SerializeField] private PlayerCollectToxicEvent m_playerCollectToxicEvent;
    [SerializeField] private ItemAnnouncer m_announcer;
    [SerializeField] private ItemData[] m_items;
    
@@ -43,7 +44,9 @@ public class ItemManager : MonoBehaviour, IGameService, IBootStrap
    {
       m_ownedItems.Add(item);
       m_announcer.Show(item);
-
+      
+      m_playerCollectToxicEvent.Raise(item.ToxicPoint);
+      
       foreach (var modifier in item.Modifiers)
       {
          m_modifiers[modifier.Type].Apply(modifier.Value);

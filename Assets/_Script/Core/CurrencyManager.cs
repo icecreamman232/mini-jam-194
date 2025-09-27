@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CurrencyManager : MonoBehaviour, IGameService, IBootStrap
 {
-    [SerializeField] private int m_coins;
+    [SerializeField] private int m_coins = 3;
     
     public Action<int> OnCoinChange;
     
