@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 public enum ToxicModifierID
 {
     SpeedReduce,
+    RandomTeleport,
     COUNT
 }
 
@@ -26,6 +27,7 @@ public class PlayerToxicController : MonoBehaviour
     {
         m_controller = GetComponent<PlayerController>();
         m_toxicModifier.Add(ToxicModifierID.SpeedReduce, new MovespeedToxicModifier());
+        m_toxicModifier.Add(ToxicModifierID.RandomTeleport, new RandomTeleportToxicModifier(GetComponent<PlayerTeleport>()));
     }
 
     public void AddToxic(float amount)

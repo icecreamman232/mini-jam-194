@@ -1,3 +1,4 @@
+using System;
 using SGGames.Script.Core;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class PlayerWeaponHandler : MonoBehaviour
     private bool m_isFlipped;
 
     public PlayerWeapon Weapon => m_weapon;
+    public Action OnShoot;
     
     private void Start()
     {
@@ -44,6 +46,7 @@ public class PlayerWeaponHandler : MonoBehaviour
         if (m_weapon.IsReloading) return;
         if (m_weapon.Shoot(m_aimDirection))
         {
+            OnShoot?.Invoke();
             m_rigidbody.AddForce(-m_aimDirection * (100f * m_weapon.RecoilForce));
         }
     }

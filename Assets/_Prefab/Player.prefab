@@ -635,6 +635,7 @@ GameObject:
   - component: {fileID: 255416873736509289}
   - component: {fileID: 8975594808938063160}
   - component: {fileID: 4206016781696857259}
+  - component: {fileID: 386689406073710638}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -747,8 +748,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_movement: {fileID: 5445442434412354440}
   m_handler: {fileID: 579525936648184841}
-  m_health: {fileID: 0}
+  m_health: {fileID: 255416873736509289}
   m_model: {fileID: 1225310110348759506}
+  m_weaponModel: {fileID: 3459521461768245072}
 --- !u!114 &5445442434412354440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -829,6 +831,23 @@ MonoBehaviour:
   m_toxicLevel: 1
   m_currentToxic: 0
   m_maxToxic: 2
+--- !u!114 &386689406073710638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5640862656023170574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e1c8d10cd1fa547bf8cbecb7eb7c81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isUnlocked: 0
+  m_weaponHandler: {fileID: 579525936648184841}
+  m_collider: {fileID: 7244999067547434405}
+  m_teleportRange: 1.5
+  m_shootCount: 5
 --- !u!1 &6110820694310025691
 GameObject:
   m_ObjectHideFlags: 0
