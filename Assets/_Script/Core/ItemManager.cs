@@ -9,6 +9,7 @@ public class ItemManager : MonoBehaviour, IGameService, IBootStrap
    [SerializeField] private ItemAnnouncer m_announcer;
    [SerializeField] private ItemData[] m_items;
    
+   private PlayerToxicController m_playerToxicController;
    private HashSet<ItemData> m_availableItems = new HashSet<ItemData>();
    private List<ItemData> m_ownedItems = new List<ItemData>();
    
@@ -23,6 +24,8 @@ public class ItemManager : MonoBehaviour, IGameService, IBootStrap
       }
 
       SetupModifiers();
+      var playerRef = ServiceLocator.GetService<LevelManager>().Player;
+      m_playerToxicController = playerRef.GetComponent<PlayerToxicController>();
    }
 
    public void Uninstall()
@@ -45,7 +48,7 @@ public class ItemManager : MonoBehaviour, IGameService, IBootStrap
       m_ownedItems.Add(item);
       m_announcer.Show(item);
       
-      m_playerCollectToxicEvent.Raise(item.ToxicPoint);
+      m_playerToxicController.AddToxic(item.ToxicPoint);
       
       foreach (var modifier in item.Modifiers)
       {

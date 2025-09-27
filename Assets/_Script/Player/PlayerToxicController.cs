@@ -6,36 +6,32 @@ public class PlayerToxicController : MonoBehaviour
     [SerializeField] private int m_toxicLevel = 1;
     [SerializeField] private float m_currentToxic;
     [SerializeField] private float m_maxToxic;
-
-    private void Start()
-    {
-        m_collectToxicEvent.AddListener(AddToxic);
-    }
-
-    private void OnDestroy()
-    {
-        m_collectToxicEvent.RemoveListener(AddToxic);
-    }
-
-    private void AddToxic(float amount)
+    
+    private ToxicEventData m_toxicEventData = new ToxicEventData();
+    
+    public void AddToxic(float amount)
     {
         m_currentToxic += amount;
+        UpdateUI();
         if (m_currentToxic >= m_maxToxic)
         {
-            float excessToxic = m_currentToxic - m_maxToxic;
-            UpgradeToxicLevel(excessToxic > 0 ? excessToxic : 0);
+            UpgradeToxicLevel();
+            UpdateUI();
         }
     }
 
-    private void UpgradeToxicLevel(float excessToxic)
+    private void UpgradeToxicLevel()
     {
         m_toxicLevel++;
         m_maxToxic += 3;
-        m_currentToxic += excessToxic;
-        if (m_currentToxic >= m_maxToxic)
-        {
-            float excessToxicAmount = m_currentToxic - m_maxToxic;
-            UpgradeToxicLevel(excessToxicAmount > 0 ? excessToxicAmount : 0);
-        }
+        m_currentToxic = 0;
+    }
+
+    private void UpdateUI()
+    {
+        m_toxicEventData.ToxicLevel = m_toxicLevel;
+        m_toxicEventData.CurrentToxic = m_currentToxic;
+        m_toxicEventData.MaxToxic = m_maxToxic;
+        m_collectToxicEvent.Raise(m_toxicEventData);
     }
 }
