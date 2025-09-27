@@ -6,6 +6,7 @@ public class ItemDisplayer : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer m_model;
     [SerializeField] private TextMeshProUGUI m_priceText;
+    [SerializeField] private TextMeshProUGUI m_toxicCostText;
     
     private ItemData m_itemData;
     private CurrencyManager m_currencyManager;
@@ -21,6 +22,7 @@ public class ItemDisplayer : MonoBehaviour
         m_itemData = itemData;
         m_model.sprite = itemData.Icon;
         m_priceText.text = itemData.Price.ToString();
+        m_toxicCostText.text = itemData.ToxicPoint.ToString();
         if (!m_currencyManager.CanPurchase(m_itemData.Price))
         {
             m_priceText.color = new Color(1f, 0.1411765f, 0f);
