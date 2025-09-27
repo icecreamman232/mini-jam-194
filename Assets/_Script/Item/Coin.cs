@@ -71,7 +71,6 @@ public class Coin : PickupBehavior, IPickup
 
     public void Pickup()
     {
-        Debug.Log("Picked up 1 coin");
         ServiceLocator.GetService<CurrencyManager>().AddCoin(1);
         this.gameObject.SetActive(false);
     }

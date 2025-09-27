@@ -170,6 +170,8 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
             m_currentLevel = Instantiate(levelContainer.GetRandomLevelPrefab(), m_levelSpawnPointParent);
         }
         
+        Debug.Log($"Load level {m_currentLevel.name}");
+        
         yield return new WaitForEndOfFrame();
         m_gameEvent.Raise(GameEventType.CreatedLevel);
     }
@@ -197,7 +199,6 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
     {
         if (eventType == GameEventType.LoadNextLevel)
         {
-            Debug.Log("Load Next Level");
             StartCoroutine(OnLoadNextLevel());
         }
         else if (eventType == GameEventType.GameOver)

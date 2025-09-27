@@ -22,6 +22,7 @@ public class CurrencyManager : MonoBehaviour, IGameService, IBootStrap
     {
         m_coins += amount;
         OnCoinChange?.Invoke(m_coins);
+        Debug.Log($"Total coins: {m_coins}");
     }
 
     public bool SpendCoin(int amount)
