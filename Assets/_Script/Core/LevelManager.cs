@@ -23,6 +23,7 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
     [SerializeField] private LevelContainer m_lvlEasyContainer;
     [SerializeField] private Transform m_levelSpawnPointParent;
 
+    private bool m_currentLevelIsShop;
     private int m_roomHasPassed = 1;
     private HashSet<EnemyHealth> m_enemiesGroups = new HashSet<EnemyHealth>();
     private Transform m_player;
@@ -90,6 +91,11 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
 
         yield return new WaitForSeconds(1f);
         m_gameEvent.Raise(GameEventType.LevelStarted);
+        if (m_currentLevelIsShop)
+        {
+            m_gameEvent.Raise(GameEventType.OpenDoor);
+            m_currentLevelIsShop = false;
+        }
     }
 
     private IEnumerator OnLoadNextLevel()
@@ -120,6 +126,11 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
         InputManager.SetActive(true);
         yield return new WaitForSeconds(1f);
         m_gameEvent.Raise(GameEventType.LevelStarted);
+        if (m_currentLevelIsShop)
+        {
+            m_gameEvent.Raise(GameEventType.OpenDoor);
+            m_currentLevelIsShop = false;
+        }
     }
     
 
@@ -152,6 +163,7 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
             //Spawn shop level every x levels
             m_roomHasPassed = 0;
             m_currentLevel = Instantiate(m_shopLevelPrefab, m_levelSpawnPointParent);
+            m_currentLevelIsShop = true;
         }
         else
         {
