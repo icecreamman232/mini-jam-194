@@ -16,5 +16,7 @@ public enum GameEventType
     OpenDoor,
     LoadNextLevel,
     GameOver,
-    Victory
+    Victory,
+    PauseGame,
+    UnPauseGame,
 }

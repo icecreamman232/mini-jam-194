@@ -11,6 +11,7 @@ namespace SGGames.Script.Core
         private InputAction m_moveAction;
         private InputAction m_attackAction;
         private InputAction m_reloadAction;
+        private InputAction m_pauseAction;
 
         private Vector2 m_hotSpot = Vector2.zero; // The click point in your texture (usually 0,0 for top-left)
         private CursorMode m_cursorMode = CursorMode.Auto;
@@ -20,6 +21,7 @@ namespace SGGames.Script.Core
         public Action OnAttackInputCallback;
         public Action OnAttackInputHeldCallback;
         public Action OnReloadInputCallback;
+        public Action OnPauseInputCallback;
 
         public static bool IsActivated;
 
@@ -104,18 +106,21 @@ namespace SGGames.Script.Core
             m_moveAction = InputSystem.actions.FindAction("Move");
             m_attackAction = InputSystem.actions.FindAction("Attack");
             m_reloadAction = InputSystem.actions.FindAction("Reload");
+            m_pauseAction = InputSystem.actions.FindAction("Pause");
         }
 
         private void RegisterAction()
         {
             m_attackAction.performed += AttackActionOnPerformed;
             m_reloadAction.performed += OnReloadInputPerformed;
+            m_pauseAction.performed += OnPauseInputPerformed;
         }
 
         private void UnregisterAction()
         {
             m_attackAction.performed -= AttackActionOnPerformed;
             m_reloadAction.performed -= OnReloadInputPerformed;
+            m_pauseAction.performed -= OnPauseInputPerformed;
         }
         
         private void AttackActionOnPerformed(InputAction.CallbackContext callbackContext)
@@ -126,6 +131,11 @@ namespace SGGames.Script.Core
         private void OnReloadInputPerformed(InputAction.CallbackContext callbackContext)
         {
             OnReloadInputCallback?.Invoke();
+        }
+        
+        private void OnPauseInputPerformed(InputAction.CallbackContext callbackContext)
+        {
+            OnPauseInputCallback?.Invoke();
         }
         
         private Vector3 ComputeWorldMousePosition()

@@ -36,6 +36,7 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     private void Update()
     {
+        if(LevelManager.IsGamePaused) return;
         if (!m_canUse) return;
         if (!this.gameObject.activeInHierarchy) return;
         m_aimDirection = (InputManager.GetWorldMousePosition() - m_weapon.ShootingPivot.position).normalized;

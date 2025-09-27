@@ -30,9 +30,11 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
     private LoadingScreenEventData m_loadingScreenEventData = new LoadingScreenEventData();
     
     public Transform Player => m_player;
+    public static bool IsGamePaused;
     
     public void Install()
     {
+        ServiceLocator.GetService<InputManager>().OnPauseInputCallback = OnPauseInputPressed;
         ServiceLocator.RegisterService<LevelManager>(this);
         m_gameEvent.AddListener(OnReceiveGameEvent);
         m_registerEnemyEvent.AddListener(OnReceiveEnemyRegister);
@@ -43,9 +45,36 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
     
     public void Uninstall()
     {
+        ServiceLocator.GetService<InputManager>().OnPauseInputCallback = null;
         ServiceLocator.UnregisterService<LevelManager>();
         m_registerEnemyEvent.RemoveListener(OnReceiveEnemyRegister);
         m_gameEvent.RemoveListener(OnReceiveGameEvent);
+    }
+
+    private void OnPauseInputPressed()
+    {
+        IsGamePaused = !IsGamePaused;
+        m_gameEvent.Raise(IsGamePaused ? GameEventType.PauseGame : GameEventType.UnPauseGame);
+        if (IsGamePaused)
+        {
+            PauseGame();
+        }
+        else
+        {
+            UnPauseGame();
+        }
+    }
+
+    private void PauseGame()
+    {
+        InputManager.SetActive(false);
+        Time.timeScale = 0f;
+    }
+
+    private void UnPauseGame()
+    {
+        InputManager.SetActive(true);
+        Time.timeScale = 1f;
     }
 
     private IEnumerator OnLoadFirstLevel()
@@ -162,6 +191,11 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
         else if (eventType == GameEventType.GameOver)
         {
             InputManager.SetActive(false);
+        }
+        else if (eventType == GameEventType.UnPauseGame)
+        {
+            IsGamePaused = false;
+            UnPauseGame();
         }
     }
 }
