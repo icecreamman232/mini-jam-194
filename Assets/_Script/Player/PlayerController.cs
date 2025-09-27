@@ -4,10 +4,12 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerMovement m_movement;
     [SerializeField] private PlayerWeaponHandler m_handler;
+    [SerializeField] private PlayerHealth m_health;
     [SerializeField] private SpriteRenderer m_model;
     
+    public PlayerMovement Movement => m_movement;
     public PlayerWeaponHandler WeaponHandler => m_handler;
-    
+    public PlayerHealth Health => m_health;
 
     public void Freeze()
     {

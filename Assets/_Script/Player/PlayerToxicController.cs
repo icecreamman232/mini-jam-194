@@ -1,4 +1,13 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
+public enum ToxicModifierID
+{
+    SpeedReduce,
+    COUNT
+}
 
 public class PlayerToxicController : MonoBehaviour
 {
@@ -6,9 +15,19 @@ public class PlayerToxicController : MonoBehaviour
     [SerializeField] private int m_toxicLevel = 1;
     [SerializeField] private float m_currentToxic;
     [SerializeField] private float m_maxToxic;
-    
+
+    private PlayerController m_controller;
     private ToxicEventData m_toxicEventData = new ToxicEventData();
-    
+
+    private Dictionary<ToxicModifierID, ToxicModifier> m_toxicModifier =
+        new Dictionary<ToxicModifierID, ToxicModifier>();
+
+    private void Start()
+    {
+        m_controller = GetComponent<PlayerController>();
+        m_toxicModifier.Add(ToxicModifierID.SpeedReduce, new MovespeedToxicModifier());
+    }
+
     public void AddToxic(float amount)
     {
         m_currentToxic += amount;
@@ -25,6 +44,14 @@ public class PlayerToxicController : MonoBehaviour
         m_toxicLevel++;
         m_maxToxic += 3;
         m_currentToxic = 0;
+
+        var modifier = GetRandomModifier();
+        modifier.Apply(m_controller);
+    }
+
+    private ToxicModifier GetRandomModifier()
+    {
+        return m_toxicModifier[(ToxicModifierID)Random.Range(0,(int)ToxicModifierID.COUNT)];
     }
 
     private void UpdateUI()

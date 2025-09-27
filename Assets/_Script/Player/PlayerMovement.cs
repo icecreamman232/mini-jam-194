@@ -27,6 +27,12 @@ public class PlayerMovement : MonoBehaviour
         var deltaMovement = m_moveDirection * (m_speed * Time.fixedDeltaTime);
         m_rigidbody.MovePosition(m_rigidbody.position + deltaMovement);
     }
+
+    public void ModifySpeed(float speed)
+    {
+        m_speed += speed;
+        m_speed = Mathf.Clamp(m_speed, 1, 10);
+    }
     
     public void SetCanMove(bool canMove)
     {
