@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using SGGames.Script.Core;
 using UnityEngine;
 
@@ -7,6 +8,12 @@ public class PlayerWeaponHandler : MonoBehaviour
     [SerializeField] private Transform m_weaponPivot;
     [SerializeField] private PlayerWeapon m_weapon;
     [SerializeField] private Rigidbody2D m_rigidbody;
+
+    [Header("Gun Model")] 
+    [SerializeField] private ModelPositionData m_modelPositionData;
+    [SerializeField] private SpriteRenderer m_barrelModel;
+    [SerializeField] private SpriteRenderer m_stockModel;
+    
     private bool m_canUse = true;
     
     private Vector2 m_aimDirection;
@@ -38,6 +45,25 @@ public class PlayerWeaponHandler : MonoBehaviour
     public void SetCanUse(bool canUse)
     {
         m_canUse = canUse;
+    }
+
+    public void UpdateGunModel(ItemData itemData)
+    {
+        var modelData = m_modelPositionData.ModelDataList.FirstOrDefault(data => data.ItemID == itemData.ItemID);
+        if(modelData == null) return;
+        switch (modelData.Type)
+        {
+            case ModelType.Barrel:
+                m_barrelModel.transform.localPosition = modelData.Position;
+                m_barrelModel.sprite = modelData.Model;
+                break;
+            case ModelType.Stock:
+                m_stockModel.transform.localPosition = modelData.Position;
+                m_stockModel.sprite = modelData.Model;
+                break;
+            case ModelType.Gun:
+                break;
+        }
     }
 
     private void OnAttackInputCallback()

@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item Data", menuName = "SGGames/Item Data")]
 public class ItemData : ScriptableObject
 {
+    public ItemID ItemID;
     public int Price;
     public Sprite Icon;
     public string Name;
@@ -11,6 +12,14 @@ public class ItemData : ScriptableObject
     public string Description;
     public float ToxicPoint;
     public ModifierData[] Modifiers;
+}
+
+public enum ItemID
+{
+    PenetratedBullet,
+    RicochetBullet,
+    StabilizerBarrel,
+    StabilizerStock,
 }
 
 [Serializable]
