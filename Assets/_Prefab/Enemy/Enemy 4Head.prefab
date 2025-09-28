@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_canMove: 0
-  m_canKnockBack: 1
+  m_canKnockBack: 0
   m_speed: 2
   m_rigidbody: {fileID: 2406267373720387111}
   m_model: {fileID: 226953476215859599}

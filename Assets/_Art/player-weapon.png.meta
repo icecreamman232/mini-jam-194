@@ -332,6 +332,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: pusher-stock
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1
+        width: 4
+        height: 4
+      alignment: 9
+      pivot: {x: 0.91851425, y: 0.50000024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efce0f92d84d7aa42b9f3f4ec1e5b317
+      internalID: 691589413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -354,6 +376,7 @@ TextureImporter:
       player-bullet: -1713413781
       player-pistol: 6575844457371078756
       player-weapon_0: -616870724
+      pusher-stock: 691589413
       ricochet-bullet: 720539007
       stock-1: 177124650
   mipmapLimitGroupName: 

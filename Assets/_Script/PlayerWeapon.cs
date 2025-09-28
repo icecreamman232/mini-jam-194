@@ -65,6 +65,14 @@ public class PlayerWeapon : Weapon
         }
     }
 
+    public void ChangeKnockBackForce(float force)
+    {
+        foreach (var bullet in m_bulletPooler.Pool)
+        {
+            ((PlayerBullet)bullet).ChangeKnockBackForce(force);
+        }
+    }
+
     public void SetFrozeChance(float chance)
     {
         foreach (var bullet in m_bulletPooler.Pool)

@@ -61,6 +61,11 @@ public class PlayerBullet : Bullet
     {
         m_damageHandler.UpdateDamage(value);
     }
+    
+    public void ChangeKnockBackForce(float force)
+    {
+        ((PlayerDamageHandler)m_damageHandler).ChangeKnockBackForce(force);
+    }
 
     protected override void Update()
     {

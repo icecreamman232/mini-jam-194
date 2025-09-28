@@ -588,6 +588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_canMove: 0
+  m_canKnockBack: 0
   m_speed: 0
   m_rigidbody: {fileID: 2291461564020652523}
   m_model: {fileID: 3535204415411550064}

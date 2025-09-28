@@ -1,4 +1,3 @@
-using System;
 using SGGames.Script.Core;
 using UnityEngine;
 
@@ -32,5 +31,10 @@ public class PlayerDamageHandler : DamageHandler
         }
         
         OnHitTarget?.Invoke();
+    }
+
+    public void ChangeKnockBackForce(float force)
+    {
+        m_knockbackForce = force;
     }
 }

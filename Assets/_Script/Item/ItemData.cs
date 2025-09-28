@@ -24,6 +24,7 @@ public enum ItemID
     AggressiveBarrel,
     GiantStock,
     FrozenBarrel,
+    PusherStock,
 }
 
 [Serializable]
@@ -41,4 +42,5 @@ public enum ModifierType
     UpdateDamage,
     IncreaseBulletSize,
     FrozenBullet,
+    IncreaseKnockBack,
 }
