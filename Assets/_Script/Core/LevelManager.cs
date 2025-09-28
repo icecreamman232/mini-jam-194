@@ -41,7 +41,9 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
         ServiceLocator.RegisterService<LevelManager>(this);
         m_gameEvent.AddListener(OnReceiveGameEvent);
         m_registerEnemyEvent.AddListener(OnReceiveEnemyRegister);
-
+        #if !UNITY_EDITOR
+        m_numLevelPassedBeforeShop = 3;
+        #endif
 
         StartCoroutine(OnLoadFirstLevel());
     }
