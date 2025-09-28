@@ -47,6 +47,11 @@ public class PlayerToxicController : MonoBehaviour
     private void UpgradeToxicLevel()
     {
         m_toxicLevel++;
+        if (m_toxicLevel > (int)ToxicModifierID.COUNT)
+        {
+            m_toxicLevel = (int)ToxicModifierID.COUNT;
+            return;
+        }
         m_maxToxic += 3;
         m_currentToxic = 0;
 

@@ -1123,7 +1123,7 @@ MonoBehaviour:
   m_collectToxicEvent: {fileID: 11400000, guid: 159dc88643f149042b2ff1ffc4cea5ae, type: 2}
   m_toxicLevel: 1
   m_currentToxic: 0
-  m_maxToxic: 2
+  m_maxToxic: 4
 --- !u!114 &386689406073710638
 MonoBehaviour:
   m_ObjectHideFlags: 0
