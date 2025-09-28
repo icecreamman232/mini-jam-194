@@ -9,6 +9,7 @@ public class CoinHud : MonoBehaviour
     private void Start()
     {
         ServiceLocator.GetService<CurrencyManager>().OnCoinChange += OnCoinChange;
+        OnCoinChange(ServiceLocator.GetService<CurrencyManager>().Coins);
     }
 
     private void OnDestroy()

@@ -7,6 +7,7 @@ public class CurrencyManager : MonoBehaviour, IGameService, IBootStrap
     [SerializeField] private int m_coins = 3;
     
     public Action<int> OnCoinChange;
+    public int Coins => m_coins;
     
     public void Install()
     {
