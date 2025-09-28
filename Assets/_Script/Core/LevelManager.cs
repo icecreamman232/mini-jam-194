@@ -233,5 +233,11 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
             IsGamePaused = false;
             UnPauseGame();
         }
+        else if (eventType == GameEventType.RestartGame)
+        {
+            Destroy(m_player.gameObject);
+            Destroy(m_currentLevel);
+            StartCoroutine(OnLoadFirstLevel());
+        }
     }
 }

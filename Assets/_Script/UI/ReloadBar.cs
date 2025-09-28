@@ -16,7 +16,7 @@ public class ReloadBar : MonoBehaviour
 
     private void OnDestroy()
     {
-        m_playerReloadEvent.AddListener(UpdateReloadingBar);
+        m_playerReloadEvent.RemoveListener(UpdateReloadingBar);
     }
 
     private void UpdateReloadingBar(ReloadEventData eventData)

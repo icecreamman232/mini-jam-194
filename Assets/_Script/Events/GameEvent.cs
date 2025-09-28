@@ -19,4 +19,5 @@ public enum GameEventType
     Victory,
     PauseGame,
     UnPauseGame,
+    RestartGame,
 }

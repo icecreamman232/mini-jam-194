@@ -21,6 +21,14 @@ public class PlayerHealthBar : MonoBehaviour
 
     private void UpdateHealthBar(HealthEventData eventData)
     {
+        if (eventData.CurrentHealth == eventData.MaxHealth)
+        {
+            foreach (var slot in m_healthSlots)
+            {
+                slot.Activate();
+            }
+        }
+        
         for (int i = 0; i < m_healthSlots.Length; i++)
         {
             if (i >= eventData.CurrentHealth)

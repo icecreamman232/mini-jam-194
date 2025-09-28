@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using SGGames.Script.Core;
 using UnityEngine;
@@ -30,5 +31,10 @@ public class Weapon : MonoBehaviour
         m_canShoot = false;
         yield return new WaitForSeconds(m_delayAfterShot);
         m_canShoot = true;
+    }
+
+    private void OnDestroy()
+    {
+        m_bulletPooler.CleanUp();
     }
 }
