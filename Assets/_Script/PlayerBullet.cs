@@ -92,7 +92,6 @@ public class PlayerBullet : Bullet
         // Check if we've already hit this target
         if (m_hitTargets.Contains(target))
         {
-            Debug.Log("Skipping hit");
             return; // Skip this hit - we've already damaged this target
         }
 
@@ -102,8 +101,7 @@ public class PlayerBullet : Bullet
         if (m_canPenetrated)
         {
             m_penetratedCount--;
-            Debug.Log($"Hit new target! Remaining penetrations: {m_penetratedCount}");
-            
+ 
             if (m_penetratedCount <= 0)
             {
                 DestroyBullet();
