@@ -24,7 +24,7 @@ public class Loot : MonoBehaviour
         {
             var coin = Instantiate(m_coinPrefab, transform.position, Quaternion.identity);
             var rb = coin.GetComponent<Rigidbody2D>();
-            rb.AddForce((UnityEngine.Random.insideUnitCircle).normalized * UnityEngine.Random.Range(300, 500f));
+            rb.AddForce((UnityEngine.Random.insideUnitCircle).normalized * UnityEngine.Random.Range(100, 300f));
         }
     }
 }
