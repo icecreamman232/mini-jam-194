@@ -20,6 +20,7 @@ public enum ItemID
     RicochetBullet,
     StabilizerBarrel,
     StabilizerStock,
+    DestroyerBarrel,
 }
 
 [Serializable]
@@ -33,4 +34,5 @@ public enum ModifierType
 {
     WeaponRecoil,
     WeaponAccuracy,
+    ChangeTargetMask,
 }

@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] protected Transform m_shootingPivot;
     [SerializeField] private float m_delayAfterShot;
-    [SerializeField] private ObjectPooler<Bullet> m_bulletPooler;
+    [SerializeField] protected ObjectPooler<Bullet> m_bulletPooler;
     
     protected bool m_canShoot = true;
 

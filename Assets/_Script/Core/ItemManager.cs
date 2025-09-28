@@ -23,11 +23,12 @@ public class ItemManager : MonoBehaviour, IGameService, IBootStrap
       {
          m_availableItems.Add(item);
       }
-
-      SetupModifiers();
+      
       var playerRef = ServiceLocator.GetService<LevelManager>().Player;
       m_playerToxicController = playerRef.GetComponent<PlayerToxicController>();
       m_playerWeaponHandler = playerRef.GetComponent<PlayerWeaponHandler>();
+      
+      SetupModifiers();
    }
 
    public void Uninstall()
@@ -44,9 +45,16 @@ public class ItemManager : MonoBehaviour, IGameService, IBootStrap
       m_availableItems.Remove(randomItem);
       return randomItem;
    }
+
+   [ContextMenu("Unlock Item")]
+   private void Test()
+   {
+      PurchaseItem(m_items[4]);
+   }
    
    public void PurchaseItem(ItemData item)
    {
+      Debug.Log($"Purchase item {item.Name}");
       m_ownedItems.Add(item);
       m_announcer.Show(item);
       
@@ -63,5 +71,6 @@ public class ItemManager : MonoBehaviour, IGameService, IBootStrap
    {
       m_modifiers.Add(ModifierType.WeaponAccuracy, new AccuracyModifier());
       m_modifiers.Add(ModifierType.WeaponRecoil, new RecoilModifier());
+      m_modifiers.Add(ModifierType.ChangeTargetMask, new DestroyEnemyBulletModifier(m_playerWeaponHandler));
    }
 }

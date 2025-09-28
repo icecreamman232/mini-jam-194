@@ -165,7 +165,7 @@ TextureImporter:
         width: 5
         height: 2
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -187,7 +187,7 @@ TextureImporter:
         width: 5
         height: 3
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -209,7 +209,7 @@ TextureImporter:
         width: 4
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -231,7 +231,7 @@ TextureImporter:
         width: 3
         height: 4
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -240,6 +240,28 @@ TextureImporter:
       bones: []
       spriteID: 29873439714f2ca47b61dba760ffc09f
       internalID: -1153701744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barrel-2
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 11
+        width: 3
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4ed49041cee10a4c81916a132fb8a73
+      internalID: 1976080151
       vertices: []
       indices: 
       edges: []
@@ -259,6 +281,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       barrel-1: 347942287
+      barrel-2: 1976080151
       go-thru-bullet: -1153701744
       player-bullet: -1713413781
       player-pistol: 6575844457371078756

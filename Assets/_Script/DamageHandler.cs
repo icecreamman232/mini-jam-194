@@ -21,7 +21,7 @@ public class DamageHandler : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(!LayerManager.IsInLayerMask(other.gameObject.layer, m_targetMask)) return;
-
+        
         if (other.gameObject.TryGetComponent<IDamageable>(out var damageable))
         {
             damageable.TakeDamage(GetDamage(), this.gameObject, m_invulnerabilityDuration);

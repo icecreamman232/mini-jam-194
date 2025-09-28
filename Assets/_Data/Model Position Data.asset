@@ -21,3 +21,7 @@ MonoBehaviour:
     ItemID: 3
     Model: {fileID: 177124650, guid: 0c73e4e38bbef5c499d75f3b114d6194, type: 3}
     Position: {x: -0.181, y: 0, z: 0}
+  - Type: 0
+    ItemID: 4
+    Model: {fileID: 1976080151, guid: 0c73e4e38bbef5c499d75f3b114d6194, type: 3}
+    Position: {x: 0.197, y: 0.095, z: 0}

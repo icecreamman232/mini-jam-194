@@ -12,7 +12,7 @@ public class PlayerWeapon : Weapon
     [SerializeField] [Range(1,5)] private float m_accuracy;
     [SerializeField] private PlayerReloadEvent m_playerReloadEvent;
     [SerializeField] private PlayerMagazineEvent m_playerMagazineEvent;
-    
+
     public float RecoilForce => m_recoilForce;
     public Transform ShootingPivot => m_shootingPivot;
     public bool IsReloading => m_isReloading;
@@ -22,7 +22,6 @@ public class PlayerWeapon : Weapon
     private float m_reloadTimer;
     private const float k_DefaultDifferentAngle = 12;
     private const float k_DifferentAnglePerAccuracy = 2;
-
     private void Start()
     {
         m_currrentMagazine = m_magazineSize;
@@ -48,6 +47,14 @@ public class PlayerWeapon : Weapon
     {
         m_recoilForce += recoilForce;
         m_recoilForce = Mathf.Clamp(m_recoilForce, 0, 10);
+    }
+
+    public void SetPlayerBulletDestroyEnemyBullet()
+    {
+        foreach (var bullet in m_bulletPooler.Pool)
+        {
+            ((PlayerBullet)bullet).SetDestroyEnemyBullet();
+        }
     }
     
     #endregion

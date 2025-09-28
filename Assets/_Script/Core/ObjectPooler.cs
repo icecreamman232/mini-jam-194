@@ -14,6 +14,7 @@ namespace SGGames.Script.Core
 
         private List<T> m_pool;
         private GameObject m_autoCreatedPoolParent;
+        public List<T> Pool => m_pool;
         
         protected virtual void Awake()
         {

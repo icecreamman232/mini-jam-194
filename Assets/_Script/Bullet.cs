@@ -4,10 +4,10 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] protected float m_speed;
     [SerializeField] [Min(0)] protected float m_range;
-    [SerializeField] private DamageHandler m_damageHandler;
+    [SerializeField] protected DamageHandler m_damageHandler;
     
-    private Vector2 m_startPosition;
-    private float m_travelledDistance;
+    protected Vector2 m_startPosition;
+    protected float m_travelledDistance;
     protected bool m_isActivated;
 
     private void Awake()
@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
         m_startPosition = transform.position;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (!m_isActivated) return;
         transform.position += transform.up * (m_speed * Time.deltaTime);
@@ -37,5 +37,11 @@ public class Bullet : MonoBehaviour
     {
         m_isActivated = false;
         this.gameObject.SetActive(false);
+    }
+
+    public void DestroyBulletImmediately()
+    {
+        Debug.Log("Destroy enemy bullet");
+        DestroyBullet();
     }
 }

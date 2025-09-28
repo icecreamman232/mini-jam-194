@@ -96,6 +96,7 @@ MonoBehaviour:
   m_speed: 12
   m_range: 8
   m_damageHandler: {fileID: 4362226239867532014}
+  m_boxCollider2D: {fileID: 5716443667797498127}
   m_animator: {fileID: 6600421308952823784}
 --- !u!114 &4362226239867532014
 MonoBehaviour:
