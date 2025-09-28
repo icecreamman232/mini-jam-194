@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b335a97efea54d87ed4a74fce01d3, type: 3}
+  m_Name: Level Medium Container
+  m_EditorClassIdentifier: 
+  m_levelGrade: 1
+  m_levelPrefabs:
+  - {fileID: 484140440895901433, guid: 842c84eb75044af4394ad570f9230481, type: 3}
+  - {fileID: 6519845662508178337, guid: c3c54640e74cf4e46bf4c143722e5ae9, type: 3}
+  - {fileID: 5547068092717264103, guid: 8ea148d475b82804dad6efa18de4e2c9, type: 3}
+  - {fileID: 540348569943976828, guid: 10183b47000f3f74489c5ebb30eba73b, type: 3}
+  - {fileID: 4160092688094191434, guid: f03787e3875ea6f4da6cfb3d5fad08b2, type: 3}
+  - {fileID: 1938826313871035007, guid: 42dd406cfd1ce4b4b8a73415594afa30, type: 3}
+  - {fileID: 7713746686789334293, guid: cd1c9e57168310c47af97b9bd69587ef, type: 3}
+  - {fileID: 1957470579136678143, guid: 52d269845e825e24a9230a369bf33405, type: 3}
