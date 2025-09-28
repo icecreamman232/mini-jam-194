@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 333fd65706995ca47af273a8bf59e857, type: 3}
   m_Name: Destroyer Barrel
   m_EditorClassIdentifier: 
-  ItemID: 2
+  ItemID: 4
   Price: 4
   Icon: {fileID: 1976080151, guid: 0c73e4e38bbef5c499d75f3b114d6194, type: 3}
   Name: Destroyer Barrel
