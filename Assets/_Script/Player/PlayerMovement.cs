@@ -41,6 +41,11 @@ public class PlayerMovement : MonoBehaviour
         {
             m_moveDirection = Vector2.zero;
             m_animator.SetBool(m_runningBooleanAnimParam, false);
+            m_rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else
+        {
+            m_rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
     

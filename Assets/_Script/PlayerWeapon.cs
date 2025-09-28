@@ -56,6 +56,14 @@ public class PlayerWeapon : Weapon
             ((PlayerBullet)bullet).SetDestroyEnemyBullet();
         }
     }
+    
+    public void UpdateBulletSize(float value)
+    {
+        foreach (var bullet in m_bulletPooler.Pool)
+        {
+            ((PlayerBullet)bullet).UpdateBulletSize(value);
+        }
+    }
 
     public void ModifyBulletDamage(float damage)
     {

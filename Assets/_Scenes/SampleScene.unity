@@ -5381,12 +5381,11 @@ MonoBehaviour:
   m_playerCollectToxicEvent: {fileID: 11400000, guid: 159dc88643f149042b2ff1ffc4cea5ae, type: 2}
   m_announcer: {fileID: 2082594290}
   m_items:
-  - {fileID: 11400000, guid: 9a44322c812219b4e8e41a34711a61d2, type: 2}
-  - {fileID: 11400000, guid: 023d6922b7d40094ab106405940c1898, type: 2}
   - {fileID: 11400000, guid: a54be71b0acf12048ab8912ed687921d, type: 2}
   - {fileID: 11400000, guid: e167d247ef02a6c44a7ca37e6ec4ffff, type: 2}
   - {fileID: 11400000, guid: 33c48f52eefd5534d811802571eb5240, type: 2}
   - {fileID: 11400000, guid: 29eb27b9ec718664099a0820617dc11f, type: 2}
+  - {fileID: 11400000, guid: f5646b102e2c023479e477eb3f8d71fd, type: 2}
 --- !u!1 &2103625506
 GameObject:
   m_ObjectHideFlags: 0

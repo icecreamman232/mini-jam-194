@@ -49,7 +49,7 @@ public class ItemManager : MonoBehaviour, IGameService, IBootStrap
    [ContextMenu("Unlock Item")]
    private void Test()
    {
-      PurchaseItem(m_items[5]);
+      PurchaseItem(m_items[4]);
    }
    
    public void PurchaseItem(ItemData item)
@@ -73,5 +73,6 @@ public class ItemManager : MonoBehaviour, IGameService, IBootStrap
       m_modifiers.Add(ModifierType.WeaponRecoil, new RecoilModifier());
       m_modifiers.Add(ModifierType.ChangeTargetMask, new DestroyEnemyBulletModifier(m_playerWeaponHandler));
       m_modifiers.Add(ModifierType.UpdateDamage, new DamageModifier(m_playerWeaponHandler));
+      m_modifiers.Add(ModifierType.IncreaseBulletSize, new IncreaseBulletSizeModifier(m_playerWeaponHandler));
    }
 }

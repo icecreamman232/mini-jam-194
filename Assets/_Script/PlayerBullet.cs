@@ -33,10 +33,10 @@ public class PlayerBullet : Bullet
     {
         m_canDestroyEnemyBullet = true;
     }
-    
-    public void SetPenetrated()
+
+    public void UpdateBulletSize(float sizeMultiplier)
     {
-        m_canPenetrated = true;
+        transform.localScale *= sizeMultiplier;
     }
 
     public void ModifyDamage(float value)

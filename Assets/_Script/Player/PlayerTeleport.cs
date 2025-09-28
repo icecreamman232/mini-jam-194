@@ -7,9 +7,13 @@ public class PlayerTeleport : MonoBehaviour
    [SerializeField] private bool m_isUnlocked;
    [SerializeField] private PlayerWeaponHandler m_weaponHandler;
    [SerializeField] private BoxCollider2D m_collider;
+   [SerializeField] private Animator m_fxAnimator;
    [SerializeField] private float m_teleportRange;
    [SerializeField] private int m_shootCount;
 
+   private static readonly int m_teleportAnimParam = Animator.StringToHash("Teleport");
+   private static readonly float m_teleportAnimDuration = 0.7f;
+   
    private PlayerController m_controller;
    private bool m_isTeleporting;
    private int m_shootCounter;
@@ -59,7 +63,8 @@ public class PlayerTeleport : MonoBehaviour
 
       m_controller.Freeze();
       m_controller.HideVisual();
-      yield return new WaitForSeconds(0.2f);
+      m_fxAnimator.SetTrigger(m_teleportAnimParam);
+      yield return new WaitForSeconds(m_teleportAnimDuration);
       
       transform.position = GetRandomTeleportPosition();
       yield return new WaitForEndOfFrame();

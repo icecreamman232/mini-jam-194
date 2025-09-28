@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 0c73e4e38bbef5c499d75f3b114d6194
+guid: 8875a6f183c7d7a4898a89b19976424b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6575844457371078756
-    second: player-weapon_0
+      213: 5876233200197682585
+    second: teleport-smoke_0
+  - first:
+      213: 4129071453906069515
+    second: teleport-smoke_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,199 +116,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player-pistol
+      name: teleport-smoke_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 12
-        width: 4
-        height: 3
-      alignment: 9
-      pivot: {x: 0.25, y: 0.33333334}
+        x: 0
+        y: 0
+        width: 24
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 46013d391b7124b50800000000000000
-      internalID: 6575844457371078756
+      spriteID: 995c32346f29c8150800000000000000
+      internalID: 5876233200197682585
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player-bullet
+      name: teleport-smoke_1
       rect:
         serializedVersion: 2
-        x: 25
-        y: 12
-        width: 2
-        height: 3
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 24
+        y: 0
+        width: 24
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b08e64e4c986d4930800000000000000
+      internalID: 4129071453906069515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: teleport-smoke_2
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 24
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 934ad243a6463e1469692c55a3e30f94
-      internalID: -1713413781
+      spriteID: bb2535b4555476541bdb34e801636a5e
+      internalID: -1509479577
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barrel-1
+      name: teleport-smoke_3
       rect:
         serializedVersion: 2
-        x: 1
-        y: 13
-        width: 5
-        height: 2
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 72
+        y: 0
+        width: 24
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9efbc2de7dcc90f4bb721b0a2a432026
-      internalID: 347942287
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: stock-1
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 9
-        width: 5
-        height: 3
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 07a3990a0a9c0a640b7cdde2ac4aabdf
-      internalID: 177124650
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ricochet-bullet
-      rect:
-        serializedVersion: 2
-        x: 28
-        y: 11
-        width: 4
-        height: 4
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 902ccdb9893b4e64e88372e042fa21b1
-      internalID: 720539007
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: go-thru-bullet
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 7
-        width: 3
-        height: 4
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 29873439714f2ca47b61dba760ffc09f
-      internalID: -1153701744
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: barrel-2
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 11
-        width: 3
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d4ed49041cee10a4c81916a132fb8a73
-      internalID: 1976080151
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player-weapon_0
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 7
-        width: 7
-        height: 3
-      alignment: 9
-      pivot: {x: 0.14126995, y: 0.46296343}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6eb94704739834d4485d5b861f11926b
-      internalID: -616870724
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: giant-stock
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 3
-        width: 5
-        height: 4
-      alignment: 9
-      pivot: {x: 0.94888896, y: 0.6611115}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0fe960fda7ddc064c8a709c465f94bed
-      internalID: 1545059488
+      spriteID: 19a027658bdd4c44aa837aed673cb821
+      internalID: -520102023
       vertices: []
       indices: 
       edges: []
@@ -314,7 +207,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 68911b8f06d993040ba55fb3523667f5
+    spriteID: 14fdea2812a2ead4ca11fc4615a0cf8b
     internalID: 0
     vertices: []
     indices: 
@@ -324,15 +217,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      barrel-1: 347942287
-      barrel-2: 1976080151
-      giant-stock: 1545059488
-      go-thru-bullet: -1153701744
-      player-bullet: -1713413781
-      player-pistol: 6575844457371078756
-      player-weapon_0: -616870724
-      ricochet-bullet: 720539007
-      stock-1: 177124650
+      teleport-smoke_0: 5876233200197682585
+      teleport-smoke_1: 4129071453906069515
+      teleport-smoke_2: -1509479577
+      teleport-smoke_3: -520102023
+      teleport-smoke_4: -1608993296
+      teleport-smoke_5: 1803551176
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
