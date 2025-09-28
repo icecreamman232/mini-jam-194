@@ -12,6 +12,8 @@ public class EnemyHealth : Health
     private MaterialPropertyBlock m_materialPropertyBlock;
     private readonly int BlendAmount = Shader.PropertyToID("_BlendAmount");
     public Action OnDeath;
+    
+    public float CurrentPercentHealth => m_currentHealth / m_maxHealth;
 
     protected override void Start()
     {
