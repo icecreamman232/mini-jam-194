@@ -2,10 +2,10 @@ using System;
 using System.Collections;
 using SGGames.Script.Core;
 using UnityEngine;
-using Random = System.Random;
 
 public class BossAI : EnemyAI
 {
+    [SerializeField] private GameEvent m_gameEvent;
     [SerializeField] private EnemyHealth m_health;
     [SerializeField] private EnemyMovement m_movement;
     [SerializeField] private float m_delayBeforeShoot;
@@ -33,9 +33,15 @@ public class BossAI : EnemyAI
 
     private void Start()
     {
+        m_health.OnDeath = OnBossDeath;
         m_playerTransform = ServiceLocator.GetService<LevelManager>().Player;
         m_updatePhaseAction = UpdatePhase1;
         m_delayBeforeShootTimer = m_delayBeforeShoot;
+    }
+
+    private void OnBossDeath()
+    {
+        m_gameEvent.Raise(GameEventType.Victory);
     }
 
     private void Update()

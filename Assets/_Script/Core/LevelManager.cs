@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
 
     [Header("Level Settings")] 
     [SerializeField] private int m_numLevelPassedBeforeShop;
+    [SerializeField] private GameObject m_bossLevelPrefab;
     [SerializeField] private GameObject m_shopLevelPrefab;
     [SerializeField] private LevelContainer m_lvlEasyContainer;
     [SerializeField] private LevelContainer m_lvlMediumContainer;
@@ -178,11 +179,18 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
             m_currentLevelIsShop = true;
             
             //Increase difficulty
-            m_levelGrade = (LevelGrade) Mathf.Clamp((int)(m_levelGrade + 1),0, (int)LevelGrade.Hard);
+            m_levelGrade = (LevelGrade) Mathf.Clamp((int)(m_levelGrade + 1),0, (int)LevelGrade.Boss);
         }
         else
         {
-            m_currentLevel = Instantiate(levelContainer.GetRandomLevelPrefab(), m_levelSpawnPointParent);
+            if (m_levelGrade == LevelGrade.Boss)
+            {
+                m_currentLevel = Instantiate(m_bossLevelPrefab, m_levelSpawnPointParent);
+            }
+            else
+            {
+                m_currentLevel = Instantiate(levelContainer.GetRandomLevelPrefab(), m_levelSpawnPointParent);
+            }
         }
         
         Debug.Log($"Load level {m_currentLevel.name}");

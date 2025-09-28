@@ -5,6 +5,7 @@ public enum LevelGrade
     Easy,
     Medium,
     Hard,
+    Boss
 }
 
 [CreateAssetMenu(fileName = "LevelContainer", menuName = "Scriptable Objects/LevelContainer")]

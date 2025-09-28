@@ -60,6 +60,7 @@ public class PlayerTeleport : MonoBehaviour
    {
       m_isTeleporting = true;
       InputManager.SetActive(false);
+      m_controller.Health.SetNoDamage(true);
 
       m_controller.Freeze();
       m_controller.HideVisual();
@@ -71,6 +72,8 @@ public class PlayerTeleport : MonoBehaviour
       
       m_controller.UnFreeze();
       
+      m_controller.Health.SetNoDamage(false);
+      m_controller.Health.SetInvulnerableForDuration(0.5f);
       InputManager.SetActive(true);
       m_isTeleporting = false;
    }

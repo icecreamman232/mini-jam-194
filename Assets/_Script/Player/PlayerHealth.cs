@@ -11,6 +11,7 @@ public class PlayerHealth : Health
     [SerializeField] private SpriteRenderer m_model;
     [SerializeField] private PlayerHealthEvent m_healthEvent;
     [SerializeField] private GameEvent m_gameEvent;
+    private bool m_isNoDamage;
     private HealthEventData m_healthEventData = new HealthEventData();
     private CameraController m_cameraController;
     private MaterialPropertyBlock m_materialPropertyBlock;
@@ -35,9 +36,20 @@ public class PlayerHealth : Health
     protected override bool CanTakeDamage()
     {
         if (m_godMode) return false;
+        if(m_isNoDamage) return false;
         return base.CanTakeDamage();
     }
     #endif
+
+    public void SetNoDamage(bool isNoDamage)
+    {
+        m_isNoDamage = isNoDamage;
+    }
+
+    public void SetInvulnerableForDuration(float duration)
+    {
+        StartCoroutine(OnInvulnerable(duration));   
+    }
 
     protected override void Damage(float damage)
     {
