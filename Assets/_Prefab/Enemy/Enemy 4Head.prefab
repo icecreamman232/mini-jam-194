@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 2018251351378389202}
   - component: {fileID: 1643274875118229763}
   - component: {fileID: 5842341970782962457}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: BodyDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
