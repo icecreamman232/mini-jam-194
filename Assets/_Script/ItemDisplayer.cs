@@ -1,3 +1,4 @@
+using System;
 using SGGames.Script.Core;
 using TMPro;
 using UnityEngine;
@@ -14,7 +15,26 @@ public class ItemDisplayer : MonoBehaviour
     private void Start()
     {
         m_currencyManager = ServiceLocator.GetService<CurrencyManager>();
+        ServiceLocator.GetService<CurrencyManager>().OnCoinChange += OnCoinChange;
         Setup(ServiceLocator.GetService<ItemManager>().GetRandomItem());
+    }
+
+    private void OnDestroy()
+    {
+        ServiceLocator.GetService<CurrencyManager>().OnCoinChange -= OnCoinChange;
+    }
+
+    private void OnCoinChange(int totalCoins)
+    {
+        if (m_currencyManager.CanPurchase(m_itemData.Price))
+        {
+            m_priceText.color = Color.white;
+        }
+        else
+        {
+            m_priceText.color = new Color(1f, 0.1411765f, 0f);
+        }
+        
     }
 
     private void Setup(ItemData itemData)

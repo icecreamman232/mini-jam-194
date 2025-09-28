@@ -128,6 +128,10 @@ public class PlayerWeapon : Weapon
             m_playerReloadEvent.Raise(m_reloadEventData);
             yield return null;
         }
+        
+        m_reloadEventData.CurrentReloadTime = m_reloadTime;
+        m_reloadEventData.MaxReloadTime = m_reloadTime;
+        m_playerReloadEvent.Raise(m_reloadEventData);
 
         m_currrentMagazine = m_magazineSize;
         m_playerMagazineEvent.Raise(m_currrentMagazine);
