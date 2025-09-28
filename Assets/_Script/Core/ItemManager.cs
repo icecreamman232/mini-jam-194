@@ -49,7 +49,7 @@ public class ItemManager : MonoBehaviour, IGameService, IBootStrap
    [ContextMenu("Unlock Item")]
    private void Test()
    {
-      PurchaseItem(m_items[4]);
+      PurchaseItem(m_items[5]);
    }
    
    public void PurchaseItem(ItemData item)
