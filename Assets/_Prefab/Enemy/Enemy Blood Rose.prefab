@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 7922889977296495912}
   - component: {fileID: 8012714587323265514}
   - component: {fileID: 3813954092121746266}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BodyDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -607,7 +607,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_canMove: 0
-  m_canKnockBack: 1
   m_speed: 0
   m_rigidbody: {fileID: 592559674520853440}
   m_model: {fileID: 8819815285154977647}

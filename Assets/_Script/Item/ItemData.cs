@@ -37,6 +37,4 @@ public enum ModifierType
     WeaponAccuracy,
     ChangeTargetMask,
     UpdateDamage,
-    PenetratedBullet,
-    RicochetBullet,
 }

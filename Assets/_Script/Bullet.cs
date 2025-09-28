@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     protected float m_travelledDistance;
     protected bool m_isActivated;
 
-    protected virtual void Awake()
+    private void Awake()
     {
         m_damageHandler.OnHitTarget = DestroyBullet;
     }

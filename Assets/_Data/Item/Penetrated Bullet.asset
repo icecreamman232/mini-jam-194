@@ -12,12 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 333fd65706995ca47af273a8bf59e857, type: 3}
   m_Name: Penetrated Bullet
   m_EditorClassIdentifier: 
-  ItemID: 0
   Price: 3
   Icon: {fileID: -1153701744, guid: 0c73e4e38bbef5c499d75f3b114d6194, type: 3}
   Name: Penetrated Bullet
   Description: Go thru enemy
   ToxicPoint: 2
-  Modifiers:
-  - Type: 4
-    Value: 0
+  Modifiers: []

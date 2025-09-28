@@ -49,18 +49,6 @@ namespace SGGames.Script.Core
                 }
             }
             
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                if (Time.timeScale >= 1)
-                {
-                    Time.timeScale = 0.5f;
-                }
-                else
-                {
-                    Time.timeScale = 1;
-                }
-            }
-            
             #endif
             
             if (!IsActivated) return;

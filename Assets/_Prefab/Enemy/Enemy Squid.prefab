@@ -163,7 +163,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_canMove: 0
-  m_canKnockBack: 1
   m_speed: 4
   m_rigidbody: {fileID: 4987777761873235448}
   m_model: {fileID: 8270683931114283237}
@@ -298,7 +297,7 @@ GameObject:
   - component: {fileID: 2708712345138945053}
   - component: {fileID: 5062849468478707412}
   - component: {fileID: 7549727167812367850}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BodyDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}

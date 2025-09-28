@@ -57,14 +57,6 @@ public class PlayerWeapon : Weapon
         }
     }
 
-    public void SetPlayerBulletPenetrated()
-    {
-        foreach (var bullet in m_bulletPooler.Pool)
-        {
-            ((PlayerBullet)bullet).SetPenetrated();
-        }
-    }
-
     public void ModifyBulletDamage(float damage)
     {
         foreach (var bullet in m_bulletPooler.Pool)

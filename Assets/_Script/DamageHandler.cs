@@ -39,15 +39,6 @@ public class DamageHandler : MonoBehaviour
             knockbackable.ApplyKnockback(atkDirection * m_knockbackForce * 100f);
         }
         
-        // Check if this is a PlayerBullet and handle penetration logic
-        var playerBullet = GetComponent<PlayerBullet>();
-        if (playerBullet != null)
-        {
-            playerBullet.OnDamageHandlerHit(other);
-        }
-        else
-        {
-            OnHitTarget?.Invoke();
-        }
+        OnHitTarget?.Invoke();
     }
 }
