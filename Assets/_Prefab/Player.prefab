@@ -1118,6 +1118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37fb8f9d0854923479db9c22d280ae10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_debuffEvent: {fileID: 11400000, guid: 326c4feda3827704f86c1f9701509728, type: 2}
+  m_debuffContainer: {fileID: 11400000, guid: f0d1bdc9879a0f64aa31c509796f51af, type: 2}
   m_collectToxicEvent: {fileID: 11400000, guid: 159dc88643f149042b2ff1ffc4cea5ae, type: 2}
   m_toxicLevel: 1
   m_currentToxic: 0

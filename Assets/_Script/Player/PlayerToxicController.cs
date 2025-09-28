@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,6 +13,8 @@ public enum ToxicModifierID
 
 public class PlayerToxicController : MonoBehaviour
 {
+    [SerializeField] private ToxicDebuffEvent m_debuffEvent;
+    [SerializeField] private ToxicDebuffContainer m_debuffContainer;
     [SerializeField] private PlayerCollectToxicEvent m_collectToxicEvent;
     [SerializeField] private int m_toxicLevel = 1;
     [SerializeField] private float m_currentToxic;
@@ -47,13 +50,15 @@ public class PlayerToxicController : MonoBehaviour
         m_maxToxic += 3;
         m_currentToxic = 0;
 
-        var modifier = GetRandomModifier();
+        var modifier = GetRandomModifier(out var modifierID);
         modifier.Apply(m_controller);
+        m_debuffEvent.Raise(m_debuffContainer.ToxicDebuffDataList.FirstOrDefault(data=>data.ID == modifierID));
     }
 
-    private ToxicModifier GetRandomModifier()
+    private ToxicModifier GetRandomModifier(out ToxicModifierID modifierID)
     {
-        return m_toxicModifier[(ToxicModifierID)Random.Range(0,(int)ToxicModifierID.COUNT)];
+        modifierID = (ToxicModifierID)Random.Range(0, (int)ToxicModifierID.COUNT);
+        return m_toxicModifier[modifierID];
     }
 
     private void UpdateUI()
