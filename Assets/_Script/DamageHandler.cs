@@ -6,12 +6,18 @@ using Random = UnityEngine.Random;
 public class DamageHandler : MonoBehaviour
 {
     [SerializeField] private LayerMask m_targetMask;
-    [SerializeField] private float m_minDamage;
-    [SerializeField] private float m_maxDamage;
+    [SerializeField] protected float m_minDamage;
+    [SerializeField] protected float m_maxDamage;
     [SerializeField] private float m_invulnerabilityDuration = 0.3f;
     [SerializeField] private float m_knockbackForce = 1f;
 
     public Action OnHitTarget;
+
+    public void UpdateDamage(float damage)
+    {
+        m_minDamage += damage;
+        m_maxDamage += damage;
+    }
     
     private float GetDamage()
     {

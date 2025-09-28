@@ -20,11 +20,17 @@ public class PlayerBullet : Bullet
         m_canDestroyEnemyBullet = true;
     }
 
+    public void ModifyDamage(float value)
+    {
+        m_damageHandler.UpdateDamage(value);
+    }
+
     protected override void Update()
     {
         if (!m_isActivated) return;
         transform.position += transform.up * (m_speed * Time.deltaTime);
-        if (CheckCollisionWithEnemyBullet())
+        
+        if (m_canDestroyEnemyBullet && CheckCollisionWithEnemyBullet())
         {
             DestroyBullet();
         }

@@ -21,6 +21,7 @@ public enum ItemID
     StabilizerBarrel,
     StabilizerStock,
     DestroyerBarrel,
+    AggressiveBarrel,
 }
 
 [Serializable]
@@ -35,4 +36,5 @@ public enum ModifierType
     WeaponRecoil,
     WeaponAccuracy,
     ChangeTargetMask,
+    UpdateDamage,
 }
