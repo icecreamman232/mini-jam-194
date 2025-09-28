@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour , IKnockback
 {
     [SerializeField] private bool m_canMove;
+    [SerializeField] private bool m_canKnockBack = true;
     [SerializeField] private float m_speed;
     [SerializeField] private Rigidbody2D m_rigidbody;
     [SerializeField] private SpriteRenderer m_model;
@@ -55,6 +56,7 @@ public class EnemyMovement : MonoBehaviour , IKnockback
     public void ApplyKnockback(Vector2 force)
     {
         if (!m_canMove) return;
+        if (!m_canKnockBack) return;
         m_rigidbody.AddForce(force);
     }
 }

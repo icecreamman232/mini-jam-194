@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
     [SerializeField] private GameObject m_shopLevelPrefab;
     [SerializeField] private LevelContainer m_lvlEasyContainer;
     [SerializeField] private LevelContainer m_lvlMediumContainer;
+    [SerializeField] private LevelContainer m_lvlHardContainer;
     [SerializeField] private Transform m_levelSpawnPointParent;
 
     private bool m_currentLevelIsShop;
@@ -152,9 +153,13 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
         {
             levelContainer = m_lvlEasyContainer;
         }
-        else if (m_levelGrade == LevelGrade.Medium || m_levelGrade == LevelGrade.Hard)
+        else if (m_levelGrade == LevelGrade.Medium)
         {
             levelContainer = m_lvlMediumContainer;       
+        }
+        else
+        {
+            levelContainer = m_lvlHardContainer;      
         }
 
         if (levelContainer == null)

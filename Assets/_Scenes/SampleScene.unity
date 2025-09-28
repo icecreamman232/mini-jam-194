@@ -4290,6 +4290,7 @@ MonoBehaviour:
   m_shopLevelPrefab: {fileID: 6194074245778431931, guid: 1bd98014bd63eb744a72d247b68eb718, type: 3}
   m_lvlEasyContainer: {fileID: 11400000, guid: f2edda6dcb1157d48b6a92dba379598c, type: 2}
   m_lvlMediumContainer: {fileID: 11400000, guid: 193544416b5d50b45983a0ae8b4a229a, type: 2}
+  m_lvlHardContainer: {fileID: 11400000, guid: 536563889ce4ece498c28d1e5396f9aa, type: 2}
   m_levelSpawnPointParent: {fileID: 1859752735}
 --- !u!1 &1735838723
 GameObject:
