@@ -152,7 +152,7 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
         {
             levelContainer = m_lvlEasyContainer;
         }
-        else if (m_levelGrade == LevelGrade.Medium)
+        else if (m_levelGrade == LevelGrade.Medium || m_levelGrade == LevelGrade.Hard)
         {
             levelContainer = m_lvlMediumContainer;       
         }
@@ -169,6 +169,9 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
             m_roomHasPassed = 0;
             m_currentLevel = Instantiate(m_shopLevelPrefab, m_levelSpawnPointParent);
             m_currentLevelIsShop = true;
+            
+            //Increase difficulty
+            m_levelGrade = (LevelGrade) Mathf.Clamp((int)(m_levelGrade + 1),0, (int)LevelGrade.Hard);
         }
         else
         {
