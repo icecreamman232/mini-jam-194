@@ -1,8 +1,9 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class ButtonController : MonoBehaviour, IPointerClickHandler
+public class ButtonController : Selectable, IPointerClickHandler
 {
     public Action OnButtonClick;
     

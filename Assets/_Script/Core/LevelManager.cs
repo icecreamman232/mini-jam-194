@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour, IBootStrap, IGameService
 {
+    [SerializeField] private TutorialCanvas m_tutorialCanvas;
     [SerializeField] private LevelGrade m_levelGrade;
     [Header("Events")] 
     [SerializeField] private RegisterEnemyEvent m_registerEnemyEvent;
@@ -26,6 +27,8 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
     [SerializeField] private LevelContainer m_lvlHardContainer;
     [SerializeField] private Transform m_levelSpawnPointParent;
 
+    private bool m_isTutorialCompleted;
+    private string m_tutorialKey = "TutorialCompleted";
     private bool m_currentLevelIsShop;
     private int m_roomHasPassed = 1;
     private HashSet<EnemyHealth> m_enemiesGroups = new HashSet<EnemyHealth>();
@@ -46,6 +49,8 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
         m_numLevelPassedBeforeShop = 3;
         #endif
 
+        m_isTutorialCompleted = PlayerPrefs.GetInt(m_tutorialKey, 0) == 1;
+        
         StartCoroutine(OnLoadFirstLevel());
     }
     
@@ -56,6 +61,14 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
         m_registerEnemyEvent.RemoveListener(OnReceiveEnemyRegister);
         m_gameEvent.RemoveListener(OnReceiveGameEvent);
     }
+
+    #if UNITY_EDITOR
+    [ContextMenu( "Reset Tutorial" )]
+    private void ResetTutorial()
+    {
+        PlayerPrefs.SetInt(m_tutorialKey, 0);
+    }
+    #endif
 
     private void OnPauseInputPressed()
     {
@@ -92,14 +105,21 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
         InputManager.SetActive(true);
         
         yield return StartCoroutine(CreateLevel());
-
-
+        
+        
         yield return new WaitForSeconds(1f);
         m_gameEvent.Raise(GameEventType.LevelStarted);
         if (m_currentLevelIsShop)
         {
             m_gameEvent.Raise(GameEventType.OpenDoor);
             m_currentLevelIsShop = false;
+        }
+
+        if (!m_isTutorialCompleted)
+        {
+            m_isTutorialCompleted = true;
+            PlayerPrefs.SetInt(m_tutorialKey, 1);
+            m_tutorialCanvas.ShowTutorial();
         }
     }
 
