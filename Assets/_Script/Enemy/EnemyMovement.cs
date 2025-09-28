@@ -14,7 +14,9 @@ public class EnemyMovement : MonoBehaviour , IKnockback
     private HashSet<int> m_animatorParamHashes = new HashSet<int>();
     private Vector2 m_moveDirection;
     private readonly int m_RunningBooleanAnimParam = Animator.StringToHash("Is Running");
-
+    
+    public float Speed => m_speed;
+    
     private void Start()
     {
         foreach(var animatorParam in m_animator.parameters)
@@ -26,6 +28,11 @@ public class EnemyMovement : MonoBehaviour , IKnockback
     public void SetCanMove(bool canMove)
     {
         m_canMove = canMove;
+    }
+
+    public void SetSpeed(float speed)
+    {
+        m_speed = speed;
     }
     
     public void ChangeMoveDirection(Vector2 moveDirection)

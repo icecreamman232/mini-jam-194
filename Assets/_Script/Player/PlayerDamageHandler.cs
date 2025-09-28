@@ -1,30 +1,17 @@
 using System;
 using SGGames.Script.Core;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class DamageHandler : MonoBehaviour
+public class PlayerDamageHandler : DamageHandler
 {
-    [SerializeField] protected LayerMask m_targetMask;
-    [SerializeField] protected float m_minDamage;
-    [SerializeField] protected float m_maxDamage;
-    [SerializeField] protected float m_invulnerabilityDuration = 0.3f;
-    [SerializeField] protected float m_knockbackForce = 1f;
+    private PlayerBullet m_bullet;
 
-    public Action OnHitTarget;
-
-    public void UpdateDamage(float damage)
+    private void Awake()
     {
-        m_minDamage += damage;
-        m_maxDamage += damage;
-    }
-    
-    protected float GetDamage()
-    {
-        return Random.Range(m_minDamage, m_maxDamage);
+        m_bullet = GetComponent<PlayerBullet>();
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D other)
+    protected override void OnTriggerEnter2D(Collider2D other)
     {
         if(!LayerManager.IsInLayerMask(other.gameObject.layer, m_targetMask)) return;
         
@@ -37,6 +24,11 @@ public class DamageHandler : MonoBehaviour
         {
             var atkDirection = (other.transform.position - transform.position).normalized;
             knockbackable.ApplyKnockback(atkDirection * m_knockbackForce * 100f);
+        }
+
+        if (m_bullet.IsFrozen && other.gameObject.TryGetComponent<EnemyController>(out var controller))
+        {
+            controller.ApplyFroze(m_bullet.FrozeDuration);
         }
         
         OnHitTarget?.Invoke();

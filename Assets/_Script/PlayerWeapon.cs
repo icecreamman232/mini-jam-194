@@ -65,6 +65,14 @@ public class PlayerWeapon : Weapon
         }
     }
 
+    public void SetFrozeChance(float chance)
+    {
+        foreach (var bullet in m_bulletPooler.Pool)
+        {
+            ((PlayerBullet)bullet).SetChanceToFroze(chance);
+        }
+    }
+
     public void ModifyBulletDamage(float damage)
     {
         foreach (var bullet in m_bulletPooler.Pool)

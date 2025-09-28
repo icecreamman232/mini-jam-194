@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerBullet : Bullet
 {
+    [SerializeField] private SpriteRenderer m_bulletSprite;
     [SerializeField] private BoxCollider2D m_boxCollider2D;
     [SerializeField] private Animator m_animator;
     
@@ -15,13 +16,25 @@ public class PlayerBullet : Bullet
     private bool m_canDestroyEnemyBullet;
     private bool m_canPenetrated;
     
+    //Frozen effect
+    private float m_chanceToFroze;
+    private bool m_isFrozen;
+    private float m_frozeDuration = 3;
+    public float FrozeDuration => m_frozeDuration;
+    public bool IsFrozen => m_isFrozen;
+    
     private HashSet<Collider2D> m_hitTargets = new HashSet<Collider2D>();
     
-
     private void OnEnable()
     {
+        m_isFrozen = false;
         m_animator.Play("Idle");
-        m_hitTargets.Clear(); 
+        m_hitTargets.Clear();
+        var chance = UnityEngine.Random.Range(0f, 100f);
+        m_isFrozen = chance <= m_chanceToFroze;
+        m_bulletSprite.color = m_isFrozen 
+            ? new Color(0.2389196f, 0.5321058f, 0.8584906f ) 
+            : Color.white;
     }
 
     private void OnDisable()
@@ -37,6 +50,11 @@ public class PlayerBullet : Bullet
     public void UpdateBulletSize(float sizeMultiplier)
     {
         transform.localScale *= sizeMultiplier;
+    }
+
+    public void SetChanceToFroze(float chance)
+    {
+        m_chanceToFroze = chance;
     }
 
     public void ModifyDamage(float value)

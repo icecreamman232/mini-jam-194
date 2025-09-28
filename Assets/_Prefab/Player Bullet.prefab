@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6322035446040825341}
   - component: {fileID: 5716443667797498127}
   - component: {fileID: 8035545990288949137}
-  - component: {fileID: 4362226239867532014}
+  - component: {fileID: 3650250884569893281}
   m_Layer: 0
   m_Name: Player Bullet
   m_TagString: Player Bullet
@@ -95,10 +95,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_speed: 12
   m_range: 8
-  m_damageHandler: {fileID: 4362226239867532014}
+  m_damageHandler: {fileID: 3650250884569893281}
+  m_bulletSprite: {fileID: 5488771785770149882}
   m_boxCollider2D: {fileID: 5716443667797498127}
   m_animator: {fileID: 6600421308952823784}
---- !u!114 &4362226239867532014
+--- !u!114 &3650250884569893281
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +108,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 810611776693081003}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e755d24fc03c28b4c9fa8ecdf5125a80, type: 3}
+  m_Script: {fileID: 11500000, guid: 766a98acd1e3f9d4fa21c8b6bc09636b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_targetMask:
@@ -116,7 +117,7 @@ MonoBehaviour:
   m_minDamage: 10
   m_maxDamage: 20
   m_invulnerabilityDuration: 0.3
-  m_knockbackForce: 3
+  m_knockbackForce: 1
 --- !u!1 &3709170938914648614
 GameObject:
   m_ObjectHideFlags: 0

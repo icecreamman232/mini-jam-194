@@ -245,7 +245,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barrel-2
+      name: destroyer-barrel
       rect:
         serializedVersion: 2
         x: 8
@@ -310,6 +310,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: frozen-barrel
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 28
+        width: 5
+        height: 4
+      alignment: 9
+      pivot: {x: 0.06328882, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98cdae1341bf3574d897ea67f51adb30
+      internalID: -509364673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -325,7 +347,8 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       barrel-1: 347942287
-      barrel-2: 1976080151
+      destroyer-barrel: 1976080151
+      frozen-barrel: -509364673
       giant-stock: 1545059488
       go-thru-bullet: -1153701744
       player-bullet: -1713413781
