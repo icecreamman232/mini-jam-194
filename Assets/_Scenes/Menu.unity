@@ -377,7 +377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &892523276
 RectTransform:
   m_ObjectHideFlags: 0
@@ -649,7 +649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1781058187
 RectTransform:
   m_ObjectHideFlags: 0
@@ -815,9 +815,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_canvasGroup: {fileID: 1792455294}
   m_playButton: {fileID: 1802118809}
-  m_title1: {fileID: 2053193244}
-  m_title2: {fileID: 1781058187}
-  m_title3: {fileID: 892523276}
+  m_title1: {fileID: 2053193245}
+  m_title2: {fileID: 1781058188}
+  m_title3: {fileID: 892523277}
+  m_authorText: {fileID: 1079640182}
 --- !u!114 &1792455296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1039,7 +1040,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2053193244
 RectTransform:
   m_ObjectHideFlags: 0
