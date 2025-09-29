@@ -6,6 +6,9 @@ public class PauseScreen : MonoBehaviour
 {
     [SerializeField] private CanvasGroup m_canvasGroup;
     [SerializeField] private ButtonController m_resumeButton;
+    [SerializeField] private ButtonController m_optionsButton;
+    [SerializeField] private ButtonController m_backButton;
+    [SerializeField] private OptionsPanel m_optionsPanel;
     [SerializeField] private TextMeshProUGUI m_hintText;
     [SerializeField] private GameEvent m_gameEvent;
     [SerializeField] private string[] m_hints;
@@ -14,13 +17,29 @@ public class PauseScreen : MonoBehaviour
     {
         m_canvasGroup.Deactivate();
         m_gameEvent.AddListener(OnReceiveGameEvent);
+        m_optionsButton.OnButtonClick = OnOptionsButtonClick;
         m_resumeButton.OnButtonClick = OnResumeButtonClick;
+        m_backButton.OnButtonClick = OnBackFromOptions;
     }
 
     private void OnDestroy()
     {
         m_resumeButton.OnButtonClick = null;
         m_gameEvent.RemoveListener(OnReceiveGameEvent);
+    }
+    
+    private void OnBackFromOptions()
+    {
+        m_optionsPanel.Hide();
+        m_resumeButton.gameObject.SetActive(true);
+        m_optionsButton.gameObject.SetActive(true);
+    }
+    
+    private void OnOptionsButtonClick()
+    {
+        m_resumeButton.gameObject.SetActive(false);
+        m_optionsButton.gameObject.SetActive(false);
+        m_optionsPanel.Show();
     }
 
     private void OnResumeButtonClick()

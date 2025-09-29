@@ -31,6 +31,19 @@ public class SoundManager : MonoBehaviour, IGameService
         PlayBGM();
     }
 
+    public void ChangeMusicVolume(float volume)
+    {
+        m_bgmAudio.volume = volume;
+    }
+
+    public void ChangeSfxVolume(float volume)
+    {
+        m_sfxShootAudio.volume = volume;
+        m_sfxReloadAudio.volume = volume;
+        m_sfxHurtAudio.volume = volume;
+        m_sfxBossCryAudio.volume = volume;
+    }
+
     public void PlaySfx(SFXID id)
     {
         switch (id)
