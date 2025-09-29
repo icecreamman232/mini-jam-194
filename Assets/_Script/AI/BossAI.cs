@@ -16,6 +16,7 @@ public class BossAI : EnemyAI
     [SerializeField] private Weapon[] m_weaponList;
     [SerializeField] private Weapon[] m_phase2Weapons;
 
+    private SoundManager m_soundManager;
     private bool m_isMovingToSpot;
     private Transform m_playerTransform;
     private Vector3 m_directionToPlayer;
@@ -35,8 +36,24 @@ public class BossAI : EnemyAI
     {
         m_health.OnDeath = OnBossDeath;
         m_playerTransform = ServiceLocator.GetService<LevelManager>().Player;
+        m_soundManager = ServiceLocator.GetService<SoundManager>();
         m_updatePhaseAction = UpdatePhase1;
         m_delayBeforeShootTimer = m_delayBeforeShoot;
+        StartCoroutine(OnRandomPlayCrySound());
+    }
+
+    private IEnumerator OnRandomPlayCrySound()
+    {
+        var timer = UnityEngine.Random.Range(10f, 12f);
+        while (true)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                timer = UnityEngine.Random.Range(10f, 12f);
+                m_soundManager.PlaySfx(SFXID.BossCry);
+            }
+        }
     }
 
     private void OnBossDeath()

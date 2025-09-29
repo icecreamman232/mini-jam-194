@@ -16,10 +16,12 @@ public class PlayerHealth : Health
     private CameraController m_cameraController;
     private MaterialPropertyBlock m_materialPropertyBlock;
     private static readonly int BlendAmount = Shader.PropertyToID("_BlendAmount");
+    private SoundManager m_soundManager;
 
     protected override void Start()
     {
         m_cameraController = ServiceLocator.GetService<CameraController>();
+        m_soundManager = ServiceLocator.GetService<SoundManager>();
         m_materialPropertyBlock = new MaterialPropertyBlock();
         base.Start();
     }
@@ -59,6 +61,7 @@ public class PlayerHealth : Health
             damage = 1;
         }
         base.Damage(damage);
+        m_soundManager.PlaySfx(SFXID.PlayerHurt);
         m_cameraController.TriggerShake(0.2f, 0.2f);
     }
 

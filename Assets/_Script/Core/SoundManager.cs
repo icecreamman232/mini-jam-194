@@ -7,6 +7,8 @@ public enum SFXID
 {
     Shoot,
     Reload,
+    PlayerHurt,
+    BossCry,
     COUNT
 }
 
@@ -15,6 +17,8 @@ public class SoundManager : MonoBehaviour, IGameService
     [SerializeField] private AudioSource m_bgmAudio;
     [SerializeField] private AudioSource m_sfxShootAudio;
     [SerializeField] private AudioSource m_sfxReloadAudio;
+    [SerializeField] private AudioSource m_sfxHurtAudio;
+    [SerializeField] private AudioSource m_sfxBossCryAudio;
     [SerializeField] private AudioClip[] m_bgmList;
 
     private int m_bgmIndex;
@@ -36,6 +40,12 @@ public class SoundManager : MonoBehaviour, IGameService
                 break;
             case SFXID.Reload:
                 m_sfxReloadAudio.Play();
+                break;
+            case SFXID.PlayerHurt:
+                m_sfxHurtAudio.Play();
+                break;
+            case SFXID.BossCry:
+                m_sfxBossCryAudio.Play();
                 break;
         }
     }
