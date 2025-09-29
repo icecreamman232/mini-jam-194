@@ -21,6 +21,8 @@ public class ButtonController : Selectable, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         OnButtonClick?.Invoke();
+        m_text.color = m_normalTextColor;
+        m_image.color = m_normalColor;
     }
 
     public override void OnPointerEnter(PointerEventData eventData)
