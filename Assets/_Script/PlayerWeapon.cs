@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using SGGames.Script.Core;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -22,10 +23,13 @@ public class PlayerWeapon : Weapon
     private float m_reloadTimer;
     private const float k_DefaultDifferentAngle = 12;
     private const float k_DifferentAnglePerAccuracy = 2;
+    private SoundManager m_soundManager;
+    
     private void Start()
     {
         m_currrentMagazine = m_magazineSize;
         m_playerMagazineEvent.Raise(m_currrentMagazine);
+        m_soundManager = ServiceLocator.GetService<SoundManager>();
     }
 
     private Vector2 ApplyAccuracy(Vector2 inputDirection)
@@ -94,6 +98,7 @@ public class PlayerWeapon : Weapon
     public void ManualReload()
     {
         if (m_isReloading) return;
+        m_soundManager.PlaySfx(SFXID.Reload);
         StartCoroutine(OnReloading());
     }
 
@@ -103,12 +108,14 @@ public class PlayerWeapon : Weapon
 
         if (base.Shoot(aimDirection))
         {
+            m_soundManager.PlaySfx(SFXID.Shoot);
             m_currrentMagazine--;
             m_playerMagazineEvent.Raise(m_currrentMagazine);
             if (m_currrentMagazine <= 0)
             {
                 m_currrentMagazine = 0;
                 m_playerMagazineEvent.Raise(m_currrentMagazine);
+                m_soundManager.PlaySfx(SFXID.Reload);
                 StartCoroutine(OnReloading());
             }
             return true;
