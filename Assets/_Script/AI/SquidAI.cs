@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 
 public class SquidAI : EnemyAI
 {
+    [SerializeField] private BoxCollider2D m_collider;
     [SerializeField] private Animator m_animator;
     [SerializeField] private EnemyMovement m_movement;
     [SerializeField] private Weapon m_weapon;
@@ -70,6 +71,12 @@ public class SquidAI : EnemyAI
                 m_directionToPlayer = (m_player.position - transform.position).normalized;
                 m_movement.ChangeMoveDirection(m_directionToPlayer);
                 m_isFollowingPlayer = true;
+            }
+            
+            var checkCollision = Physics2D.Raycast(transform.position, m_movement.MoveDirection, 0.5f, m_obstacleMask);
+            if (checkCollision.collider != null)
+            {
+                SetRandomMoveDirection();
             }
         }
     }

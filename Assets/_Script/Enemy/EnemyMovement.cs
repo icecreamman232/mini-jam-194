@@ -15,6 +15,8 @@ public class EnemyMovement : MonoBehaviour , IKnockback
     private Vector2 m_moveDirection;
     private readonly int m_RunningBooleanAnimParam = Animator.StringToHash("Is Running");
     
+    public Vector2 MoveDirection => m_moveDirection;
+    
     public float Speed => m_speed;
     
     private void Start()

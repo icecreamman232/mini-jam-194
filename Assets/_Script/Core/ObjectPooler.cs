@@ -102,6 +102,7 @@ namespace SGGames.Script.Core
             
             for (int i = 0; i < m_pool.Count; i++)
             {
+                if(m_pool[i] == null) continue;
                 if(m_pool[i].gameObject == null) continue;
                 Destroy(m_pool[i].gameObject);
             }
