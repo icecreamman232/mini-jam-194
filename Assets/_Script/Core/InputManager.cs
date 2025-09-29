@@ -98,7 +98,11 @@ namespace SGGames.Script.Core
         {
             IsActivated = false;
             UnregisterAction();
-            ServiceLocator.UnregisterService<InputManager>();
+            OnMoveInputCallback = null;
+            WorldMousePosition = null;
+            OnAttackInputCallback = null;
+            OnReloadInputCallback = null;
+            OnPauseInputCallback = null;
         }
 
         private void FindActions()

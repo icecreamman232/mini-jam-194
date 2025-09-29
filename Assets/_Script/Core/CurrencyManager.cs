@@ -16,7 +16,7 @@ public class CurrencyManager : MonoBehaviour, IGameService, IBootStrap
 
     public void Uninstall()
     {
-        ServiceLocator.UnregisterService<CurrencyManager>();
+        OnCoinChange = null;
     }
 
     public void AddCoin(int amount)

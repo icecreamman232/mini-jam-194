@@ -1,6 +1,7 @@
 using System;
 using SGGames.Script.Core;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoseScreen : MonoBehaviour
 {
@@ -14,8 +15,16 @@ public class LoseScreen : MonoBehaviour
         m_canvasGroup.Deactivate();
         m_gameEvent.AddListener(OnReceiveGameEvent);
         m_restartButton.OnButtonClick = OnRestartButtonClicked;
+        m_menuButton.OnButtonClick = OnMenuButtonClicked;
     }
-    
+
+    private void OnMenuButtonClicked()
+    {
+        ServiceLocator.GetService<BootStrapHandler>().UninstallBootStrap();
+        ServiceLocator.ClearServices();
+        SceneManager.LoadScene("Menu");
+    }
+
     private void OnDestroy()
     {
         m_gameEvent.RemoveListener(OnReceiveGameEvent);

@@ -24,14 +24,8 @@ public class PlayerWeaponHandler : MonoBehaviour
     
     private void Start()
     {
-        ServiceLocator.GetService<InputManager>().OnAttackInputCallback += OnAttackInputCallback;
-        ServiceLocator.GetService<InputManager>().OnReloadInputCallback += OnReloadInputCallback;
-    }
-
-    private void OnDestroy()
-    {
-        ServiceLocator.GetService<InputManager>().OnAttackInputCallback -= OnAttackInputCallback;
-        ServiceLocator.GetService<InputManager>().OnReloadInputCallback -= OnReloadInputCallback;
+        ServiceLocator.GetService<InputManager>().OnAttackInputCallback = OnAttackInputCallback;
+        ServiceLocator.GetService<InputManager>().OnReloadInputCallback = OnReloadInputCallback;
     }
 
     private void Update()

@@ -56,8 +56,6 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
     
     public void Uninstall()
     {
-        ServiceLocator.GetService<InputManager>().OnPauseInputCallback = null;
-        ServiceLocator.UnregisterService<LevelManager>();
         m_registerEnemyEvent.RemoveListener(OnReceiveEnemyRegister);
         m_gameEvent.RemoveListener(OnReceiveGameEvent);
     }

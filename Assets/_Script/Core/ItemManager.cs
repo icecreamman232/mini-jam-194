@@ -33,7 +33,7 @@ public class ItemManager : MonoBehaviour, IGameService, IBootStrap
 
    public void Uninstall()
    {
-      ServiceLocator.UnregisterService<ItemManager>();
+      
    }
 
    public ItemData GetRandomItem()

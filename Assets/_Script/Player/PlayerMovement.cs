@@ -13,12 +13,7 @@ public class PlayerMovement : MonoBehaviour
     
     private void Start()
     {
-        ServiceLocator.GetService<InputManager>().OnMoveInputCallback += OnReceiveMovementInput;
-    }
-
-    private void OnDestroy()
-    {
-        ServiceLocator.GetService<InputManager>().OnMoveInputCallback -= OnReceiveMovementInput;
+        ServiceLocator.GetService<InputManager>().OnMoveInputCallback = OnReceiveMovementInput;
     }
     
     private void FixedUpdate()
