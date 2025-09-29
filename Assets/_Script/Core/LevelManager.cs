@@ -253,6 +253,7 @@ public class LevelManager : MonoBehaviour, IBootStrap, IGameService
         }
         else if (eventType == GameEventType.RestartGame)
         {
+            m_enemiesGroups.Clear();
             Destroy(m_player.gameObject);
             Destroy(m_currentLevel);
             StartCoroutine(OnLoadFirstLevel());
