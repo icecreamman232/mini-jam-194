@@ -78,6 +78,12 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 0}
+  m_normalTextColor: {r: 0, g: 0, b: 0, a: 1}
+  m_hoverTextColor: {r: 1, g: 1, b: 1, a: 1}
+  m_text: {fileID: 8472350815464863841}
+  m_image: {fileID: 4481846730606810778}
+  m_normalColor: {r: 1, g: 1, b: 1, a: 1}
+  m_hoverColor: {r: 1, g: 0.14117648, b: 0, a: 1}
 --- !u!1 &4773473506321794066
 GameObject:
   m_ObjectHideFlags: 0
