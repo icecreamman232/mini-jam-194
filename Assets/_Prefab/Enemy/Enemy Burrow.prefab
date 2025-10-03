@@ -615,6 +615,7 @@ MonoBehaviour:
   m_weaponDown: {fileID: 585386869319482127}
   m_animator: {fileID: 729200638377383201}
   m_followingTime: 3
+  m_frameUpdatePathFinding: 60
 --- !u!1 &8085869632465733594
 GameObject:
   m_ObjectHideFlags: 0
