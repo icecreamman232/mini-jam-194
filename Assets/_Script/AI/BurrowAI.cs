@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using SGGames.Script.Core;
 using UnityEngine;
 
@@ -12,6 +14,7 @@ public class BurrowAI : EnemyAI
     [SerializeField] private Weapon m_weaponDown;
     [SerializeField] private Animator m_animator;
     [SerializeField] private float m_followingTime;
+    [SerializeField] private int m_frameUpdatePathFinding = 120;
     private Transform m_playerTransform;
     private Vector3 m_directionToPlayer;
     private float m_timeSinceLastFollowing;
@@ -19,14 +22,33 @@ public class BurrowAI : EnemyAI
     private bool m_isAttacking;
     private readonly int m_attackAnimParam = Animator.StringToHash("Attack");
     private const float k_AttackAnimDuration = 2.1f;
-    
+    private RoomPathStatus m_roomPathStatus;
+    private List<Vector2> m_path;
+    private int m_frameCounter;
+    private int m_currentPathIndex;
 
     private void Start()
     {
         m_playerTransform = ServiceLocator.GetService<LevelManager>().Player;
         m_isFollowingPlayer = true;
+        m_currentPathIndex = 0;
         m_timeSinceLastFollowing = 0;
         m_health.SetNoDamage(true);
+        m_roomPathStatus = ServiceLocator.GetService<RoomPathStatus>();
+        if (m_roomPathStatus != null)
+        {
+            m_roomPathStatus.RegisterEnemy(transform);
+        }
+        m_path = m_roomPathStatus.FindPathToPlayer(transform.position);
+    }
+    
+    private void OnDisable()
+    {
+        // Register this enemy with the pathfinding system
+        if (m_roomPathStatus != null)
+        {
+            m_roomPathStatus.UnregisterEnemy(transform);
+        }
     }
 
     public void Shoot()
@@ -44,6 +66,29 @@ public class BurrowAI : EnemyAI
 
         if (m_isFollowingPlayer)
         {
+            //Only update path every X frames
+            m_frameCounter++;
+            if (m_frameCounter >= m_frameUpdatePathFinding)
+            {
+                m_path = m_roomPathStatus.FindPathToPlayer(transform.position);
+                m_frameCounter = 0;
+                m_currentPathIndex = 0;
+            }
+
+            if (m_path != null && m_path.Count != 0)
+            {
+                //Move to next point in path
+                if (Vector2.Distance((Vector3)m_path[m_currentPathIndex], transform.position) <= 0.1f)
+                {
+                    m_currentPathIndex++;
+                    if (m_currentPathIndex >= m_path.Count)
+                    {
+                        m_path = m_roomPathStatus.FindPathToPlayer(transform.position);
+                        m_currentPathIndex = 0;
+                    }
+                }  
+            }
+            
             m_timeSinceLastFollowing += Time.deltaTime;
 
             if (m_timeSinceLastFollowing >= m_followingTime)
@@ -55,11 +100,11 @@ public class BurrowAI : EnemyAI
                 return;
             }
         
-            var lastestDirectionToPlayer = (m_playerTransform.position - transform.position).normalized;
-            if (m_directionToPlayer != lastestDirectionToPlayer)
+            var newDirectionToPlayer = ((Vector3)m_path[m_currentPathIndex] - transform.position).normalized;
+            if (newDirectionToPlayer != m_directionToPlayer)
             {
-                m_directionToPlayer = lastestDirectionToPlayer;
-                m_movement.ChangeMoveDirection(lastestDirectionToPlayer);
+                m_directionToPlayer = newDirectionToPlayer;
+                m_movement.ChangeMoveDirection(m_directionToPlayer);
             }
         }
         else
@@ -80,5 +125,7 @@ public class BurrowAI : EnemyAI
         m_isAttacking = false;
         m_isFollowingPlayer = true;
         m_health.SetNoDamage(true);
+        m_path = m_roomPathStatus.FindPathToPlayer(transform.position);
+        m_currentPathIndex = 0;
     }
 }

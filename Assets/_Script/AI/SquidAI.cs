@@ -36,6 +36,7 @@ public class SquidAI : EnemyAI
         {
             m_roomPathStatus.RegisterEnemy(transform);
         }
+        m_path = m_roomPathStatus.FindPathToPlayer(transform.position);
     }
 
     private void OnDisable()
@@ -76,17 +77,21 @@ public class SquidAI : EnemyAI
                 m_frameCounter = 0;
                 m_currentPathIndex = 0;
             }
-            
-            //Move to next point in path
-            if (Vector2.Distance((Vector3)m_path[m_currentPathIndex], transform.position) <= 0.1f)
+
+            if (m_path != null && m_path.Count != 0)
             {
-                m_currentPathIndex++;
-                if (m_currentPathIndex >= m_path.Count)
+                //Move to next point in path
+                if (Vector2.Distance((Vector3)m_path[m_currentPathIndex], transform.position) <= 0.1f)
                 {
-                    m_path = m_roomPathStatus.FindPathToPlayer(transform.position);
-                    m_currentPathIndex = 0;
-                }
-            }            
+                    m_currentPathIndex++;
+                    if (m_currentPathIndex >= m_path.Count)
+                    {
+                        m_path = m_roomPathStatus.FindPathToPlayer(transform.position);
+                        m_currentPathIndex = 0;
+                    }
+                }   
+            }
+                     
             var newDirectionToPlayer = ((Vector3)m_path[m_currentPathIndex] - transform.position).normalized;
             if (newDirectionToPlayer != m_directionToPlayer)
             {
