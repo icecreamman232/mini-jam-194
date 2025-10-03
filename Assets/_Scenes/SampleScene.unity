@@ -8255,6 +8255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_roomWidth: 20
   m_roomHeight: 12
+  m_frameToUpdate: 10
 --- !u!4 &1750487115
 Transform:
   m_ObjectHideFlags: 0

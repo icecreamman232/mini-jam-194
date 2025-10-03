@@ -18,10 +18,13 @@ public class RoomPathStatus : MonoBehaviour
 {
     [SerializeField] private int m_roomWidth;
     [SerializeField] private int m_roomHeight;
+    [SerializeField] private int m_frameToUpdate;
     private RoomCell[] m_roomValues;
     private Transform m_playerTransform;
     private readonly System.Collections.Generic.Queue<int> m_indexQueue = new System.Collections.Generic.Queue<int>(256);
+    private Vector3 m_lastPlayerPosition;
     private int[] m_directions;
+    private int m_frameCounter;
 
     private void Start()
     {
@@ -43,12 +46,21 @@ public class RoomPathStatus : MonoBehaviour
         var cellPosOfPlayer = WorldToCell(m_playerTransform.position);
         GetCell(cellPosOfPlayer).DistanceValue = 100;
         UpdateGridValue();
+
+        m_lastPlayerPosition = m_playerTransform.position;
+        m_frameCounter = 0;
     }
 
     private void Update()
     {
         if(m_playerTransform == null) return;
-        UpdateGridValue();
+        m_frameCounter++;
+        if (m_frameCounter >= m_frameToUpdate && m_playerTransform.position != m_lastPlayerPosition)
+        {
+            m_lastPlayerPosition = m_playerTransform.position;
+            UpdateGridValue();
+            Debug.Log("Update Grid Value");
+        }
     }
 
 
