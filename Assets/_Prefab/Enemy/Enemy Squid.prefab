@@ -181,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_canThink: 0
+  m_collider: {fileID: 0}
   m_animator: {fileID: 7512998768536957238}
   m_movement: {fileID: 1978579114650893923}
   m_weapon: {fileID: 9144937825983921248}
@@ -189,6 +190,7 @@ MonoBehaviour:
   m_obstacleMask:
     serializedVersion: 2
     m_Bits: 64
+  m_frameUpdatePathFinding: 60
 --- !u!1 &2410034367377305550
 GameObject:
   m_ObjectHideFlags: 0
